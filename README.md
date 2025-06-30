@@ -1,1 +1,1 @@
-# beauty_salon
+# This is the website for the beauty salon "Julia": https://beaty-salon-julia.onrender.com
