@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="{{ get_locale() }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Salon - Salon Piękności</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>Beauty Salon</h2>
+            </div>
+            <div class="nav-menu">
+                <a href="#contacts" class="nav-link">{{ _('Our Contacts') }}</a>
+                <a href="#services" class="nav-link">{{ _('Our Services') }}</a>
+                <a href="#gallery" class="nav-link">{{ _('Our Gallery') }}</a>
+                <a href="#reviews" class="nav-link">{{ _('Reviews') }}</a>
+
+                <!-- Language Selector -->
+                <div class="language-selector">
+                    <span class="current-lang">
+                        {% if get_locale() == 'pl' %}🇵🇱 PL
+                        {% elif get_locale() == 'en' %}🇬🇧 EN
+                        {% else %}🇺🇦 UA{% endif %}
+                    </span>
+                    <div class="language-dropdown">
+                        <a href="{{ url_for('set_language', language='pl') }}">🇵🇱 Polski</a>
+                        <a href="{{ url_for('set_language', language='en') }}">🇬🇧 English</a>
+                        <a href="{{ url_for('set_language', language='uk') }}">🇺🇦 Українська</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>{{ _('Welcome to Beauty Salon') }}</h1>
+            <p>{{ _('Your beauty is our passion') }}</p>
+            <a href="#services" class="btn-primary">{{ _('Explore Services') }}</a>
+        </div>
+    </section>
+
+    <!-- Contacts Section -->
+    <section id="contacts" class="section contacts">
+        <div class="container">
+            <h2 class="section-title">{{ _('Our Contacts') }}</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>{{ _('Address') }}</h3>
+                    <p>ul. Perwomaiska 15<br>00-001 Chorzow</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>{{ _('Phone') }}</h3>
+                    <p>+48 123 456 789</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>{{ _('Email') }}</h3>
+                    <p>yuxaker@gmail.com</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <h3>{{ _('Working Hours') }}</h3>
+                    <p>{{ _('Mon-Fri') }}: 9:00 - 20:00<br>{{ _('Sat-Sun') }}: 10:00 - 18:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">{{ _('Our Services') }}</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3>{{ _('Manicure') }}</h3>
+                    <p>{{ _('Professional nail care and beautiful designs') }}</p>
+                    <ul>
+                        <li>{{ _('Classic Manicure') }} - 60 PLN</li>
+                        <li>{{ _('Gel Manicure') }} - 120 PLN</li>
+                        <li>{{ _('Nail Art') }} - 150 PLN</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shoe-prints"></i>
+                    </div>
+                    <h3>{{ _('Pedicure') }}</h3>
+                    <p>{{ _('Complete foot care for health and beauty') }}</p>
+                    <ul>
+                        <li>{{ _('Classic Pedicure') }} - 80 PLN</li>
+                        <li>{{ _('Spa Pedicure') }} - 150 PLN</li>
+                        <li>{{ _('Medical Pedicure') }} - 180 PLN</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <h3>{{ _('Haircut') }}</h3>
+                    <p>{{ _('Stylish haircuts and professional styling') }}</p>
+                    <ul>
+                        <li>{{ _('Women\'s Cut') }} - 100 PLN</li>
+                        <li>{{ _('Men\'s Cut') }} - 70 PLN</li>
+                        <li>{{ _('Styling') }} - 80 PLN</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">{{ _('Our Gallery') }}</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400" alt="{{ _('Manicure') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Manicure') }}</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="{{ _('Pedicure') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Pedicure') }}</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="{{ _('Haircut') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Haircut') }}</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400" alt="{{ _('Salon Interior') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Our Salon') }}</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1610992015732-de627cf04394?w=400" alt="{{ _('Nail Art') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Nail Art') }}</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400" alt="{{ _('Hair Styling') }}">
+                    <div class="gallery-overlay">
+                        <h4>{{ _('Hair Styling') }}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section reviews">
+        <div class="container">
+            <h2 class="section-title">{{ _('Reviews') }}</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"</p>
+                    <h4>Anna Kowalska</h4>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"</p>
+                    <h4>Maria Nowak</h4>
+                </div>
+                <div class="review-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"{{ _('Professional haircuts and excellent customer service. Highly recommend!') }}"</p>
+                    <h4>Katarzyna Wiśniewska</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Beauty Salon. {{ _('All rights reserved.') }}</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
