@@ -93,6 +93,7 @@ body {
     border-radius: 25px;
     font-weight: 500;
     transition: transform 0.3s ease;
+    display: block;
 }
 
 .current-lang:hover {
@@ -111,9 +112,20 @@ body {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
+    z-index: 1001;
 }
 
-.language-selector:hover .language-dropdown {
+/* Remove hover effect for mobile, use JavaScript click instead */
+@media (hover: hover) {
+    .language-selector:hover .language-dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+}
+
+/* Active state for mobile */
+.language-selector.active .language-dropdown {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);

@@ -16,6 +16,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Language selector for mobile
+const languageSelector = document.querySelector('.language-selector');
+const currentLang = document.querySelector('.current-lang');
+
+// Handle click on language selector
+currentLang.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    languageSelector.classList.toggle('active');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+    if (!languageSelector.contains(e.target)) {
+        languageSelector.classList.remove('active');
+    }
+});
+
+// Prevent dropdown from closing when clicking on language options
+document.querySelectorAll('.language-dropdown a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
+});
+
 // Add scroll effect to navbar
 window.addEventListener('scroll', function() {
     const navbar = document.querySelector('.navbar');
