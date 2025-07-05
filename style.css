@@ -18,6 +18,7 @@ body {
     line-height: 1.6;
     color: var(--dark-color);
     overflow-x: hidden;
+    padding-top: 80px;
 }
 
 .container {
@@ -28,6 +29,25 @@ body {
 
 /* Navigation */
 /* Navigation Button Alignment Options */
+.navbar {
+    position: fixed;      /* ADD THIS - makes navbar stick to top */
+    top: 0;              /* ADD THIS - positions at very top */
+    left: 0;             /* ADD THIS - full width left */
+    right: 0;            /* ADD THIS - full width right */
+    width: 100%;         /* ADD THIS - ensures full width */
+    padding: 1rem 0;     /* ADD THIS - vertical padding */
+    background: rgba(255, 255, 255, 0.95);  /* ADD THIS - semi-transparent white */
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);  /* ADD THIS - subtle shadow */
+    z-index: 1000;       /* ADD THIS - keeps navbar on top */
+    transition: all 0.3s ease;  /* ADD THIS - smooth transitions */
+}
+
+/* Optional: Compact navbar when scrolling */
+.navbar.scrolled {
+    padding: 0.5rem 0;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
+}
 
 /* Option 1: Center all buttons (recommended for mobile) */
 .nav-menu {
@@ -191,6 +211,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: -80px;
+    padding-top: 80px;
 }
 
 .hero::before {
