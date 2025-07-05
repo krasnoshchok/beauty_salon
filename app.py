@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import os
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'your-secret-key-here'
@@ -132,6 +133,7 @@ def get_translation(key):
 # Make translation function available in templates
 app.jinja_env.globals.update(_=get_translation)
 app.jinja_env.globals.update(get_locale=get_locale)
+app.jinja_env.globals.update(current_year=datetime.now().year)  # ADD THIS LINE
 
 
 @app.route('/set_language/<language>')
