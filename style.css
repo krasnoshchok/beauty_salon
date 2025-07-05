@@ -27,35 +27,67 @@ body {
 }
 
 /* Navigation */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-    transition: all 0.3s ease;
+/* Navigation Button Alignment Options */
+
+/* Option 1: Center all buttons (recommended for mobile) */
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.navbar .container {
+/* Option 2: Spread buttons evenly across the width */
+.nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.nav-brand h2 {
-    font-family: 'Playfair Display', serif;
-    color: var(--primary-color);
-    font-size: 2rem;
-}
-
+/* Option 3: Buttons packed to the left */
 .nav-menu {
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    gap: 15px;
 }
+
+/* Option 4: Buttons packed to the right */
+.nav-menu {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Option 5: Responsive alignment - center on mobile, spread on desktop */
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        justify-content: center;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
 
 .nav-link {
     text-decoration: none;
@@ -486,10 +518,10 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-menu {
-        flex-direction: column;
-        gap: 1rem;
-    }
+    /*.nav-menu {*/
+    /*    flex-direction: column;*/
+    /*    gap: 1rem;*/
+    /*}*/
 
     .hero-content h1 {
         font-size: 2.5rem;
@@ -506,3 +538,4 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
