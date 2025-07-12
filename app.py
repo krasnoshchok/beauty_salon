@@ -199,4 +199,4 @@ if __name__ == '__main__':
     with open('templates/index.html', 'w', encoding='utf-8') as f:
         f.write(open('index.html', 'r', encoding='utf-8').read() if os.path.exists('index.html') else '')
 
-    app.run(debug=True)
+    app.run()
