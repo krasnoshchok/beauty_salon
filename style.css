@@ -28,64 +28,27 @@ body {
 }
 
 /* Navigation */
-/* Navigation Button Alignment Options */
 .navbar {
-    position: fixed;      /* ADD THIS - makes navbar stick to top */
-    top: 0;              /* ADD THIS - positions at very top */
-    left: 0;             /* ADD THIS - full width left */
-    right: 0;            /* ADD THIS - full width right */
-    width: 100%;         /* ADD THIS - ensures full width */
-    padding: 1rem 0;     /* ADD THIS - vertical padding */
-    background: rgba(255, 255, 255, 0.95);  /* ADD THIS - semi-transparent white */
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);  /* ADD THIS - subtle shadow */
-    z-index: 1000;       /* ADD THIS - keeps navbar on top */
-    transition: all 0.3s ease;  /* ADD THIS - smooth transitions */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 1rem 0;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
 }
 
-/* Optional: Compact navbar when scrolling */
+/* Navbar changes on scroll (handled by JavaScript) */
 .navbar.scrolled {
     padding: 0.5rem 0;
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Option 1: Center all buttons (recommended for mobile) */
-.nav-menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* Option 2: Spread buttons evenly across the width */
-.nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* Option 3: Buttons packed to the left */
-.nav-menu {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* Option 4: Buttons packed to the right */
-.nav-menu {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-}
-
-/* Option 5: Responsive alignment - center on mobile, spread on desktop */
+/* Navigation menu - responsive alignment */
 .nav-menu {
     display: flex;
     justify-content: space-between;
@@ -107,7 +70,6 @@ body {
         gap: 8px;
     }
 }
-
 
 .nav-link {
     text-decoration: none;
@@ -167,7 +129,7 @@ body {
     z-index: 1001;
 }
 
-/* Remove hover effect for mobile, use JavaScript click instead */
+/* Hover effect for desktop */
 @media (hover: hover) {
     .language-selector:hover .language-dropdown {
         opacity: 1;
@@ -189,6 +151,7 @@ body {
     text-decoration: none;
     color: var(--dark-color);
     transition: background 0.3s ease;
+    white-space: nowrap;
 }
 
 .language-dropdown a:hover {
@@ -234,9 +197,18 @@ body {
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-content h2 {
+    font-family: 'Playfair Display', serif;
     font-size: 4rem;
+    margin-top: 0;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
 }
 
 .hero-content p {
@@ -491,6 +463,98 @@ body {
     font-weight: 600;
 }
 
+/* Location Section */
+.location {
+    background: var(--light-color);
+}
+
+.location-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 450px;
+    display: block;
+}
+
+.location-info {
+    height: 100%;
+}
+
+.info-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.info-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--dark-color);
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    width: 30px;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+.info-item h4 {
+    font-size: 1rem;
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.info-item p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.directions-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.directions-link:hover {
+    color: var(--secondary-color);
+    transform: translateX(5px);
+}
+
+.directions-link i {
+    font-size: 0.9rem;
+}
+
 /* Footer */
 .footer {
     background: var(--dark-color);
@@ -540,13 +604,16 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
-    /*.nav-menu {*/
-    /*    flex-direction: column;*/
-    /*    gap: 1rem;*/
-    /*}*/
-
     .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero-content h2 {
         font-size: 2.5rem;
+    }
+
+    .hero-content p {
+        font-size: 1.2rem;
     }
 
     .section-title {
@@ -559,5 +626,36 @@ body {
     .reviews-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Location responsive */
+    .location-content {
+        grid-template-columns: 1fr;
+    }
+
+    .map-container iframe {
+        height: 350px;
+    }
 }
 
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .btn-primary {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        padding: 1.5rem;
+    }
+}

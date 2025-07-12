@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beauty Salon - Salon Piękności</title>
+    <title>Ciach ciach i uroda - Salon Piękności</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -16,7 +16,7 @@
                 <a href="#contacts" class="nav-link">{{ _('Our Contacts') }}</a>
                 <a href="#services" class="nav-link">{{ _('Our Services') }}</a>
                 <a href="#gallery" class="nav-link">{{ _('Our Gallery') }}</a>
-                <a href="#reviews" class="nav-link">{{ _('Reviews') }}</a>
+                <a href="#location" class="nav-link">{{ _('Location') }}</a>
 
                 <!-- Language Selector -->
                 <div class="language-selector">
@@ -38,7 +38,8 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>{{ _('Welcome to Beauty Salon') }}</h1>
+            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem;">{{ _('Welcome to Beauty Salon') }}</h1>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 4rem; margin-top: 0; margin-bottom: 1rem; line-height: 1.2;">{{ _('Salon Name') }}</h2>
             <p>{{ _('Your beauty is our passion') }}</p>
             <a href="#services" class="btn-primary">{{ _('Explore Services') }}</a>
         </div>
@@ -52,7 +53,7 @@
                 <div class="contact-item">
                     <i class="fas fa-map-marker-alt"></i>
                     <h3>{{ _('Address') }}</h3>
-                    <p>ul. Perwomaiska 15<br>00-001 Chorzow</p>
+                    <p>ul. Radockiego 44c<br>40-645 Katowice</p>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
@@ -85,9 +86,9 @@
                     <h3>{{ _('Manicure') }}</h3>
                     <p>{{ _('Professional nail care and beautiful designs') }}</p>
                     <ul>
-                        <li>{{ _('Classic Manicure') }} - 60 PLN</li>
-                        <li>{{ _('Gel Manicure') }} - 120 PLN</li>
-                        <li>{{ _('Nail Art') }} - 150 PLN</li>
+                        <li>{{ _('Classic Manicure') }}</li>
+                        <li>{{ _('Gel Manicure') }}</li>
+                        <li>{{ _('Nail Art') }}</li>
                     </ul>
                 </div>
                 <div class="service-card">
@@ -97,9 +98,9 @@
                     <h3>{{ _('Pedicure') }}</h3>
                     <p>{{ _('Complete foot care for health and beauty') }}</p>
                     <ul>
-                        <li>{{ _('Classic Pedicure') }} - 80 PLN</li>
-                        <li>{{ _('Spa Pedicure') }} - 150 PLN</li>
-                        <li>{{ _('Medical Pedicure') }} - 180 PLN</li>
+                        <li>{{ _('Classic Pedicure') }}</li>
+                        <li>{{ _('Spa Pedicure') }}</li>
+                        <li>{{ _('Medical Pedicure') }}</li>
                     </ul>
                 </div>
                 <div class="service-card">
@@ -109,9 +110,9 @@
                     <h3>{{ _('Haircut') }}</h3>
                     <p>{{ _('Stylish haircuts and professional styling') }}</p>
                     <ul>
-                        <li>{{ _('Women\'s Cut') }} - 100 PLN</li>
-                        <li>{{ _('Men\'s Cut') }} - 70 PLN</li>
-                        <li>{{ _('Styling') }} - 80 PLN</li>
+                        <li>{{ _('Women\'s Cut') }}</li>
+                        <li>{{ _('Men\'s Cut') }}</li>
+                        <li>{{ _('Styling') }}</li>
                     </ul>
                 </div>
             </div>
@@ -157,43 +158,58 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section id="reviews" class="section reviews">
+    <!-- Location Section with Google Maps -->
+    <section id="location" class="section location">
         <div class="container">
-            <h2 class="section-title">{{ _('Reviews') }}</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"</p>
-                    <h4>Anna Kowalska</h4>
+            <h2 class="section-title">{{ _('Find Us') }}</h2>
+            <div class="location-content">
+                <div class="map-container">
+                    <iframe
+                        src="https://maps.google.com/maps?q=Radockiego%2044C%2C%2040-645%20Katowice%2C%20Poland&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                <div class="location-info">
+                    <div class="info-card">
+                        <h3>{{ _('Visit Our Salon') }}</h3>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>{{ _('Address') }}</h4>
+                                <p>ul. Radockiego 44c<br>40-645 Katowice, Poland</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-directions"></i>
+                            <div>
+                                <h4>{{ _('Get Directions') }}</h4>
+                                <a href="https://www.google.com/maps/dir//Gen.+W%C5%82adys%C5%82awa+Radockiego+44c,+40-645+Katowice,+Poland"
+                                   target="_blank"
+                                   class="directions-link">
+                                    {{ _('Open in Google Maps') }} <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-parking"></i>
+                            <div>
+                                <h4>{{ _('Parking') }}</h4>
+                                <p>{{ _('Free parking available') }}</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-bus"></i>
+                            <div>
+                                <h4>{{ _('Public Transport') }}</h4>
+                                <p>{{ _('Bus stops nearby: 110, 674') }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <p>"{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"</p>
-                    <h4>Maria Nowak</h4>
-                </div>
-                <div class="review-card">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p>"{{ _('Professional haircuts and excellent customer service. Highly recommend!') }}"</p>
-                    <h4>Katarzyna Wiśniewska</h4>
                 </div>
             </div>
         </div>

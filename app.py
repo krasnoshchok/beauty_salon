@@ -12,7 +12,17 @@ translations = {
         'Our Services': 'Nasze Usługi',
         'Our Gallery': 'Nasza Galeria',
         'Reviews': 'Opinie',
-        'Welcome to Beauty Salon': 'Witamy w Salonie Piękności "Julia""',
+        'Location': 'Lokalizacja',
+        'Find Us': 'Znajdź Nas',
+        'Visit Our Salon': 'Odwiedź Nasz Salon',
+        'Get Directions': 'Wskazówki Dojazdu',
+        'Open in Google Maps': 'Otwórz w Google Maps',
+        'Parking': 'Parking',
+        'Free parking available': 'Bezpłatny parking dostępny',
+        'Public Transport': 'Transport Publiczny',
+        'Bus stops nearby: 110, 674': 'Przystanki autobusowe w pobliżu: 110, 674',
+        'Welcome to Beauty Salon': 'Witamy w Salonie Piękności',
+        'Salon Name': '"Ciach ciach i uroda"',
         'Your beauty is our passion': 'Twoje piękno jest naszą pasją',
         'Explore Services': 'Zobacz Usługi',
         'Address': 'Adres',
@@ -49,7 +59,17 @@ translations = {
         'Our Services': 'Our Services',
         'Our Gallery': 'Our Gallery',
         'Reviews': 'Reviews',
-        'Welcome to Beauty Salon': 'Welcome to Beauty Salon "Julia"',
+        'Location': 'Location',
+        'Find Us': 'Find Us',
+        'Visit Our Salon': 'Visit Our Salon',
+        'Get Directions': 'Get Directions',
+        'Open in Google Maps': 'Open in Google Maps',
+        'Parking': 'Parking',
+        'Free parking available': 'Free parking available',
+        'Public Transport': 'Public Transport',
+        'Bus stops nearby: 110, 674': 'Bus stops nearby: 110, 674',
+        'Welcome to Beauty Salon': 'Welcome to Beauty Salon',
+        'Salon Name': '"Ciach ciach i uroda"',
         'Your beauty is our passion': 'Your beauty is our passion',
         'Explore Services': 'Explore Services',
         'Address': 'Address',
@@ -86,7 +106,17 @@ translations = {
         'Our Services': 'Наші Послуги',
         'Our Gallery': 'Наша Галерея',
         'Reviews': 'Відгуки',
-        'Welcome to Beauty Salon': 'Ласкаво просимо до Салону Краси "Юлія"',
+        'Location': 'Розташування',
+        'Find Us': 'Знайдіть Нас',
+        'Visit Our Salon': 'Відвідайте Наш Салон',
+        'Get Directions': 'Як Дістатися',
+        'Open in Google Maps': 'Відкрити в Google Maps',
+        'Parking': 'Паркування',
+        'Free parking available': 'Безкоштовна парковка',
+        'Public Transport': 'Громадський Транспорт',
+        'Bus stops nearby: 110, 674': 'Автобусні зупинки поруч: 110, 674',
+        'Welcome to Beauty Salon': 'Ласкаво просимо до Салону Краси',
+        'Salon Name': '"Ciach ciach i uroda"',
         'Your beauty is our passion': 'Ваша краса - наша пристрасть',
         'Explore Services': 'Переглянути Послуги',
         'Address': 'Адреса',
@@ -133,7 +163,7 @@ def get_translation(key):
 # Make translation function available in templates
 app.jinja_env.globals.update(_=get_translation)
 app.jinja_env.globals.update(get_locale=get_locale)
-app.jinja_env.globals.update(current_year=datetime.now().year)  # ADD THIS LINE
+app.jinja_env.globals.update(current_year=datetime.now().year)
 
 
 @app.route('/set_language/<language>')
@@ -167,11 +197,3 @@ if __name__ == '__main__':
         f.write(open('index.html', 'r', encoding='utf-8').read() if os.path.exists('index.html') else '')
 
     app.run(debug=True)
-
-# To run the app:
-# 1. Save this file as app.py
-# 2. Save the HTML content to a file named index.html
-# 3. Save the CSS content to a file named style.css
-# 4. Save the JS content to a file named script.js
-# 5. Run: python app.py
-# 6. Open http://localhost:5000 in your browser
