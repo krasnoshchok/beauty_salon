@@ -418,13 +418,13 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-parking" aria-hidden="true"></i>
-                            <div>
-                                <h4>{{ _('Parking') }}</h4>
-                                <p>{{ _('Free parking available') }}</p>
-                            </div>
-                        </div>
+<!--                        <div class="info-item">-->
+<!--                            <i class="fas fa-parking" aria-hidden="true"></i>-->
+<!--                            <div>-->
+<!--                                <h4>{{ _('Parking') }}</h4>-->
+<!--                                <p>{{ _('Free parking available') }}</p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <div class="info-item">
                             <i class="fas fa-bus" aria-hidden="true"></i>
                             <div>
@@ -439,13 +439,13 @@
                                 <p><a href="tel:+48123456789" itemprop="telephone">+48 123 456 789</a></p>
                             </div>
                         </div>
-                        <div class="info-item">
-                            <i class="fas fa-envelope" aria-hidden="true"></i>
-                            <div>
-                                <h4>{{ _('Email') }}</h4>
-                                <p><a href="mailto:yuxaker@gmail.com" itemprop="email">yuxaker@gmail.com</a></p>
-                            </div>
-                        </div>
+<!--                        <div class="info-item">-->
+<!--                            <i class="fas fa-envelope" aria-hidden="true"></i>-->
+<!--                            <div>-->
+<!--                                <h4>{{ _('Email') }}</h4>-->
+<!--                                <p><a href="mailto:yuxaker@gmail.com" itemprop="email">yuxaker@gmail.com</a></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
                     </div>
                 </div>
             </div>
@@ -470,119 +470,12 @@
         </div>
     </footer>
 
-    <!-- Contact Form Modal (Optional) -->
-    <div id="contact-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="contact-modal-title" aria-modal="true">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="contact-modal-title">{{ _('Book Appointment') }}</h3>
-                <button class="modal-close" aria-label="Close booking form">&times;</button>
-            </div>
-            <form id="contact-form" class="contact-form" novalidate>
-                <div class="form-group">
-                    <label for="name">{{ _('Full Name') }} *</label>
-                    <input type="text" id="name" name="name" required aria-required="true">
-                </div>
-                <div class="form-group">
-                    <label for="email">{{ _('Email') }} *</label>
-                    <input type="email" id="email" name="email" required aria-required="true">
-                </div>
-                <div class="form-group">
-                    <label for="phone">{{ _('Phone') }}</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="service">{{ _('Service') }} *</label>
-                    <select id="service" name="service" required aria-required="true">
-                        <option value="">{{ _('Select service') }}</option>
-                        <option value="manicure">{{ _('Manicure') }}</option>
-                        <option value="pedicure">{{ _('Pedicure') }}</option>
-                        <option value="haircut">{{ _('Haircut') }}</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">{{ _('Additional Information') }}</label>
-                    <textarea id="message" name="message" rows="4" placeholder="{{ _('Preferred date and time, special requests...') }}"></textarea>
-                </div>
-                <button type="submit" class="btn-primary">{{ _('Send Request') }}</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Booking CTA Button -->
+    <!-- Call Me Button -->
     <div class="booking-cta" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
         <a href="tel:+48123456789" class="btn-primary" style="margin-right: 10px;" aria-label="Call to book appointment">
             <i class="fas fa-phone" aria-hidden="true"></i> {{ _('Call Now') }}
         </a>
     </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-
-    <!-- Schema.org BreadcrumbList -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "{% if get_locale() == 'pl' %}Strona Główna{% elif get_locale() == 'en' %}Home{% else %}Головна{% endif %}",
-          "item": "{{ url_for('index', _external=True) }}"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "{{ _('Our Services') }}",
-          "item": "{{ url_for('index', _external=True) }}#services"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "{{ _('Our Gallery') }}",
-          "item": "{{ url_for('index', _external=True) }}#gallery"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "{{ _('Location') }}",
-          "item": "{{ url_for('index', _external=True) }}#location"
-        }
-      ]
-    }
-    </script>
-
-    <!-- FAQ Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "{% if get_locale() == 'pl' %}Jakie są godziny otwarcia salonu?{% elif get_locale() == 'en' %}What are the salon opening hours?{% else %}Які години роботи салону?{% endif %}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{% if get_locale() == 'pl' %}Jesteśmy otwarci od poniedziałku do piątku 9:00-20:00, w weekendy 10:00-18:00.{% elif get_locale() == 'en' %}We are open Monday to Friday 9:00-20:00, weekends 10:00-18:00.{% else %}Ми працюємо з понеділка по п'ятницю 9:00-20:00, вихідні 10:00-18:00.{% endif %}"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "{% if get_locale() == 'pl' %}Gdzie znajduje się salon?{% elif get_locale() == 'en' %}Where is the salon located?{% else %}Де знаходиться салон?{% endif %}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{% if get_locale() == 'pl' %}Nasz salon znajduje się przy ul. Radockiego 44c, 40-645 Katowice.{% elif get_locale() == 'en' %}Our salon is located at ul. Radockiego 44c, 40-645 Katowice.{% else %}Наш салон знаходиться за адресою вул. Radockiego 44c, 40-645 Катовіце.{% endif %}"
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "{% if get_locale() == 'pl' %}Czy jest dostępny parking?{% elif get_locale() == 'en' %}Is parking available?{% else %}Чи є паркування?{% endif %}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{% if get_locale() == 'pl' %}Tak, dla naszych klientów dostępny jest bezpłatny parking.{% elif get_locale() == 'en' %}Yes, free parking is available for our clients.{% else %}Так, для наших клієнтів доступне безкоштовне паркування.{% endif %}"
-          }
-        }
-      ]
-    }
-    </script>
 </body>
 </html>
