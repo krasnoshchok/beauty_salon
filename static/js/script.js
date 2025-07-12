@@ -648,12 +648,7 @@ function initializeApp() {
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-    // document.addEventListener('DOMContentLoaded', initializeApp);
-    document.addEventListener('DOMContentLoaded', function() {
-    initializeApp();
-    initModal();
-    initContactFormAjax();
-});
+    document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
     initializeApp();
 }
