@@ -124,56 +124,40 @@ function initSmoothScrolling() {
 
 // Language selector initialization
 function initLanguageSelector() {
-    const languageSelector = document.querySelector('.language-selector');
-    const currentLang = document.querySelector('.current-lang');
+  const languageSelector = document.querySelector('.language-selector');
+  const currentLang      = document.querySelector('.current-lang');
+  const languageLinks    = document.querySelectorAll('.language-dropdown a');
 
-    if (languageSelector && currentLang) {
-        // // Handle click on language selector
-        // currentLang.addEventListener('click', function(e) {
-        //     e.preventDefault();
-        //     e.stopPropagation();
-        //     languageSelector.classList.toggle('active');
-        // });
+  if (!languageSelector || !currentLang) return;
 
-        function toggleDropdown(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          languageSelector.classList.toggle('active');
-        }
+  // Toggle dropdown on desktop click or mobile touch
+  function toggleDropdown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    languageSelector.classList.toggle('active');
+  }
+  ['click','touchstart'].forEach(evt =>
+    currentLang.addEventListener(evt, toggleDropdown)
+  );
 
-        ['click', 'touchstart'].forEach(evt =>
-          currentLang.addEventListener(evt, toggleDropdown)
-        );
-
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!languageSelector.contains(e.target)) {
-                languageSelector.classList.remove('active');
-            }
-        });
-
-        ['click', 'touchstart'].forEach(evt =>
-          document.addEventListener(evt, e => {
-            if (!languageSelector.contains(e.target)) {
-              languageSelector.classList.remove('active');
-            }
-          })
-        );
-
-
-        // Prevent dropdown from closing when clicking on language options
-        const languageLinks = document.querySelectorAll('.language-dropdown a');
-        languageLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.stopPropagation();
-                // Add loading state
-                this.style.opacity = '0.7';
-                showNotification('Changing language...', 'info', 2000);
-            });
-        });
-
+  // Close whenever you tap/click outside
+  function closeIfOutside(e) {
+    if (!languageSelector.contains(e.target)) {
+      languageSelector.classList.remove('active');
     }
+  }
+  ['click','touchstart'].forEach(evt =>
+    document.addEventListener(evt, closeIfOutside)
+  );
+
+  // When a user picks a language, dim link, show notice and close
+  languageLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      this.style.opacity = '0.7';
+      showNotification('Changing language…', 'info', 2000);
+      languageSelector.classList.remove('active');
+    });
+  });
 }
 
 // Mobile menu initialization
