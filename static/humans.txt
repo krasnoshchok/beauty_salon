@@ -1,0 +1,11 @@
+/* TEAM */
+Developer: Oleksandr Krasnoshchok
+Site: https://no-site.com
+Location: Bietigheim-Bissingen, Deutschland
+
+/* SITE */
+Last update: 2025/07/12
+Language: Polish / English / Ukrainian
+Standards: HTML5, CSS3, JavaScript ES6
+Components: Flask, Font Awesome, Google Fonts
+Software: VS Code, Git

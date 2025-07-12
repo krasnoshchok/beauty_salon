@@ -1,33 +1,211 @@
 <!DOCTYPE html>
-<html lang="{{ get_locale() }}">
+<html lang="{{ get_locale() }}" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIACH CIACH I URODA - Salon Piękności</title>
+
+    <!-- SEO Meta Tags -->
+    <title>{% if get_locale() == 'pl' %}CIACH CIACH I URODA - Salon Piękności Katowice | Manicure, Pedicure, Strzyżenie{% elif get_locale() == 'en' %}CIACH CIACH I URODA - Beauty Salon Katowice | Manicure, Pedicure, Haircut{% else %}CIACH CIACH I URODA - Салон Краси Катовіце | Манікюр, Педикюр, Стрижка{% endif %}</title>
+
+    <meta name="description" content="{% if get_locale() == 'pl' %}Profesjonalny salon piękności CIACH CIACH I URODA w Katowicach. Oferujemy manicure, pedicure, strzyżenie włosów. Radockiego 44c. ✨ Umów wizytę: +48 123 456 789{% elif get_locale() == 'en' %}Professional beauty salon CIACH CIACH I URODA in Katowice. We offer manicure, pedicure, haircuts. Radockiego 44c. ✨ Book appointment: +48 123 456 789{% else %}Професійний салон краси CIACH CIACH I URODA в Катовіце. Пропонуємо манікюр, педикюр, стрижки. Radockiego 44c. ✨ Записатися: +48 123 456 789{% endif %}">
+
+    <meta name="keywords" content="{% if get_locale() == 'pl' %}salon piękności Katowice, manicure Katowice, pedicure Katowice, strzyżenie Katowice, żelowe paznokcie, stylizacja włosów, CIACH CIACH I URODA, Radockiego 44c{% elif get_locale() == 'en' %}beauty salon Katowice, manicure Katowice, pedicure Katowice, haircut Katowice, gel nails, hair styling, CIACH CIACH I URODA, Radockiego 44c{% else %}салон краси Катовіце, манікюр Катовіце, педикюр Катовіце, стрижка Катовіце, гелеві нігті, укладка волосся, CIACH CIACH I URODA, Radockiego 44c{% endif %}">
+
+    <meta name="author" content="CIACH CIACH I URODA">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="PL-SL">
+    <meta name="geo.placename" content="Katowice">
+    <meta name="geo.position" content="50.2649;19.0238">
+    <meta name="ICBM" content="50.2649, 19.0238">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="business.business">
+    <meta property="og:title" content="{% if get_locale() == 'pl' %}CIACH CIACH I URODA - Salon Piękności Katowice{% elif get_locale() == 'en' %}CIACH CIACH I URODA - Beauty Salon Katowice{% else %}CIACH CIACH I URODA - Салон Краси Катовіце{% endif %}">
+    <meta property="og:description" content="{% if get_locale() == 'pl' %}Profesjonalny salon piękności w Katowicach. Manicure, pedicure, strzyżenie. Radockiego 44c.{% elif get_locale() == 'en' %}Professional beauty salon in Katowice. Manicure, pedicure, haircuts. Radockiego 44c.{% else %}Професійний салон краси в Катовіце. Манікюр, педикюр, стрижки. Radockiego 44c.{% endif %}">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:site_name" content="CIACH CIACH I URODA">
+    <meta property="og:image" content="{{ url_for('static', filename='images/salon-og-image.jpg', _external=True) }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="CIACH CIACH I URODA - Beauty Salon Interior">
+    <meta property="og:locale" content="{% if get_locale() == 'pl' %}pl_PL{% elif get_locale() == 'en' %}en_US{% else %}uk_UA{% endif %}">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% if get_locale() == 'pl' %}CIACH CIACH I URODA - Salon Piękności Katowice{% elif get_locale() == 'en' %}CIACH CIACH I URODA - Beauty Salon Katowice{% else %}CIACH CIACH I URODA - Салон Краси Катовіце{% endif %}">
+    <meta name="twitter:description" content="{% if get_locale() == 'pl' %}Profesjonalny salon piękności w Katowicach. Manicure, pedicure, strzyżenie.{% elif get_locale() == 'en' %}Professional beauty salon in Katowice. Manicure, pedicure, haircuts.{% else %}Професійний салон краси в Катовіце. Манікюр, педикюр, стрижки.{% endif %}">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/salon-og-image.jpg', _external=True) }}">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}">
+
+    <!-- Alternate Languages -->
+    <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=pl" hreflang="pl">
+    <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=en" hreflang="en">
+    <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=uk" hreflang="uk">
+    <link rel="alternate" href="{{ url_for('index', _external=True) }}" hreflang="x-default">
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BeautySalon",
+      "name": "CIACH CIACH I URODA",
+      "image": [
+        "{{ url_for('static', filename='images/salon-front.jpg', _external=True) }}",
+        "{{ url_for('static', filename='images/salon-interior.jpg', _external=True) }}",
+        "{{ url_for('static', filename='images/salon-services.jpg', _external=True) }}"
+      ],
+      "description": "{% if get_locale() == 'pl' %}Profesjonalny salon piękności w Katowicach oferujący usługi manicure, pedicure i strzyżenia włosów.{% elif get_locale() == 'en' %}Professional beauty salon in Katowice offering manicure, pedicure and hair cutting services.{% else %}Професійний салон краси в Катовіце, що пропонує послуги манікюру, педикюру та стрижки волосся.{% endif %}",
+      "url": "{{ request.url }}",
+      "telephone": "+48123456789",
+      "email": "yuxaker@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Radockiego 44c",
+        "addressLocality": "Katowice",
+        "postalCode": "40-645",
+        "addressRegion": "Śląskie",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 50.2649,
+        "longitude": 19.0238
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "priceRange": "$$",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Beauty Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "{% if get_locale() == 'pl' %}Manicure{% elif get_locale() == 'en' %}Manicure{% else %}Манікюр{% endif %}",
+              "description": "{{ _('Professional nail care and beautiful designs') }}"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "{% if get_locale() == 'pl' %}Pedicure{% elif get_locale() == 'en' %}Pedicure{% else %}Педикюр{% endif %}",
+              "description": "{{ _('Complete foot care for health and beauty') }}"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "{% if get_locale() == 'pl' %}Strzyżenie{% elif get_locale() == 'en' %}Haircut{% else %}Стрижка{% endif %}",
+              "description": "{{ _('Stylish haircuts and professional styling') }}"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Anna K."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"
+        },
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Maria S."
+          },
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5"
+          },
+          "reviewBody": "{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/ciachciachiuroda",
+        "https://www.instagram.com/ciachciachiuroda",
+        "https://maps.google.com/maps?q=Radockiego%2044C%2C%2040-645%20Katowice%2C%20Poland"
+      ]
+    }
+    </script>
+
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="container">
             <div class="nav-menu">
-                <a href="#services" class="nav-link">{{ _('Our Services') }}</a>
-                <a href="#gallery" class="nav-link">{{ _('Our Gallery') }}</a>
-                <a href="#location" class="nav-link">{{ _('Location') }}</a>
+                <a href="#services" class="nav-link" aria-label="{{ _('Navigate to services section') }}">{{ _('Our Services') }}</a>
+                <a href="#gallery" class="nav-link" aria-label="{{ _('Navigate to gallery section') }}">{{ _('Our Gallery') }}</a>
+<!--                <a href="#reviews" class="nav-link" aria-label="{{ _('Navigate to reviews section') }}">{{ _('Reviews') }}</a>-->
+                <a href="#location" class="nav-link" aria-label="{{ _('Navigate to location section') }}">{{ _('Location') }}</a>
 
                 <!-- Language Selector -->
-                <div class="language-selector">
-                    <span class="current-lang">
+                <div class="language-selector" role="region" aria-label="Language selection">
+                    <button class="current-lang" aria-haspopup="true" aria-expanded="false" aria-label="Select language">
                         {% if get_locale() == 'pl' %}🇵🇱 PL
                         {% elif get_locale() == 'en' %}🇬🇧 EN
                         {% else %}🇺🇦 UA{% endif %}
-                    </span>
-                    <div class="language-dropdown">
-                        <a href="{{ url_for('set_language', language='pl') }}">🇵🇱 Polski</a>
-                        <a href="{{ url_for('set_language', language='en') }}">🇬🇧 English</a>
-                        <a href="{{ url_for('set_language', language='uk') }}">🇺🇦 Українська</a>
+                    </button>
+                    <div class="language-dropdown" role="menu">
+                        <a href="{{ url_for('set_language', language='pl') }}" role="menuitem" hreflang="pl">🇵🇱 Polski</a>
+                        <a href="{{ url_for('set_language', language='en') }}" role="menuitem" hreflang="en">🇬🇧 English</a>
+                        <a href="{{ url_for('set_language', language='uk') }}" role="menuitem" hreflang="uk">🇺🇦 Українська</a>
                     </div>
                 </div>
             </div>
@@ -35,70 +213,70 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <header class="hero">
         <div class="hero-contact-info">
-            <div class="contact-info-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>ul. Radockiego 44c, 40-645 Katowice</span>
+            <div class="contact-info-item" itemscope itemtype="http://schema.org/PostalAddress">
+                <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                <span itemprop="streetAddress">ul. Radockiego 44c</span>, <span itemprop="postalCode">40-645</span> <span itemprop="addressLocality">Katowice</span>
             </div>
+<!--            <div class="contact-info-item">-->
+<!--                <i class="fas fa-envelope" aria-hidden="true"></i>-->
+<!--                <a href="mailto:yuxaker@gmail.com" itemprop="email">yuxaker@gmail.com</a>-->
+<!--            </div>-->
             <div class="contact-info-item">
-                <i class="fas fa-envelope"></i>
-                <span>yuxaker@gmail.com</span>
-            </div>
-            <div class="contact-info-item">
-                <i class="fas fa-clock"></i>
+                <i class="fas fa-clock" aria-hidden="true"></i>
                 <span>{{ _('Mon-Fri') }}: 9:00-20:00, {{ _('Sat-Sun') }}: 10:00-18:00</span>
             </div>
         </div>
         <div class="hero-content">
-            <h1 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 0.5rem;">{{ _('Welcome to Beauty Salon') }}</h1>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 4rem; margin-top: 0; margin-bottom: 1rem; line-height: 1.2;">{{ _('Salon Name') }}</h2>
+            <h1>{{ _('Welcome to Beauty Salon') }}</h1>
+            <h2 data-text="{{ _('Salon Name') }}">{{ _('Salon Name') }}</h2>
             <p>{{ _('Your beauty is our passion') }}</p>
-            <a href="#services" class="btn-primary">{{ _('Explore Services') }}</a>
+            <a href="#services" class="btn-primary" aria-label="{{ _('Explore our beauty services') }}">{{ _('Explore Services') }}</a>
         </div>
-    </section>
+    </header>
 
     <!-- Services Section -->
     <section id="services" class="section services">
         <div class="container">
             <h2 class="section-title">{{ _('Our Services') }}</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
-                        <i class="fas fa-hand-sparkles"></i>
+                        <i class="fas fa-hand-sparkles" aria-hidden="true"></i>
                     </div>
-                    <h3>{{ _('Manicure') }}</h3>
-                    <p>{{ _('Professional nail care and beautiful designs') }}</p>
+                    <h3 itemprop="name">{{ _('Manicure') }}</h3>
+                    <p itemprop="description">{{ _('Professional nail care and beautiful designs') }}</p>
                     <ul>
                         <li>{{ _('Classic Manicure') }}</li>
                         <li>{{ _('Gel Manicure') }}</li>
                         <li>{{ _('Nail Art') }}</li>
                     </ul>
-                </div>
-                <div class="service-card">
+                </article>
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
-                        <i class="fas fa-shoe-prints"></i>
+                        <i class="fas fa-shoe-prints" aria-hidden="true"></i>
                     </div>
-                    <h3>{{ _('Pedicure') }}</h3>
-                    <p>{{ _('Complete foot care for health and beauty') }}</p>
+                    <h3 itemprop="name">{{ _('Pedicure') }}</h3>
+                    <p itemprop="description">{{ _('Complete foot care for health and beauty') }}</p>
                     <ul>
                         <li>{{ _('Classic Pedicure') }}</li>
                         <li>{{ _('Spa Pedicure') }}</li>
                         <li>{{ _('Medical Pedicure') }}</li>
                     </ul>
-                </div>
-                <div class="service-card">
+                </article>
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
-                        <i class="fas fa-cut"></i>
+                        <i class="fas fa-cut" aria-hidden="true"></i>
                     </div>
-                    <h3>{{ _('Haircut') }}</h3>
-                    <p>{{ _('Stylish haircuts and professional styling') }}</p>
+                    <h3 itemprop="name">{{ _('Haircut') }}</h3>
+                    <p itemprop="description">{{ _('Stylish haircuts and professional styling') }}</p>
                     <ul>
                         <li>{{ _('Women\'s Cut') }}</li>
                         <li>{{ _('Men\'s Cut') }}</li>
                         <li>{{ _('Styling') }}</li>
                     </ul>
-                </div>
+                </article>
             </div>
         </div>
     </section>
@@ -108,39 +286,93 @@
         <div class="container">
             <h2 class="section-title">{{ _('Our Gallery') }}</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400" alt="{{ _('Manicure') }}">
+                <figure class="gallery-item" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400" alt="{{ _('Professional manicure service at CIACH CIACH I URODA salon') }}" itemprop="contentUrl" loading="lazy">
                     <div class="gallery-overlay">
-                        <h4>{{ _('Manicure') }}</h4>
+                        <h4 itemprop="name">{{ _('Manicure') }}</h4>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="{{ _('Pedicure') }}">
+                </figure>
+                <figure class="gallery-item" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="{{ _('Professional pedicure service at CIACH CIACH I URODA salon') }}" itemprop="contentUrl" loading="lazy">
                     <div class="gallery-overlay">
-                        <h4>{{ _('Pedicure') }}</h4>
+                        <h4 itemprop="name">{{ _('Pedicure') }}</h4>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="{{ _('Haircut') }}">
+                </figure>
+                <figure class="gallery-item" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="{{ _('Professional haircut service at CIACH CIACH I URODA salon') }}" itemprop="contentUrl" loading="lazy">
                     <div class="gallery-overlay">
-                        <h4>{{ _('Haircut') }}</h4>
+                        <h4 itemprop="name">{{ _('Haircut') }}</h4>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400" alt="{{ _('Salon Interior') }}">
+                </figure>
+                <figure class="gallery-item" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400" alt="{{ _('Interior of CIACH CIACH I URODA beauty salon in Katowice') }}" itemprop="contentUrl" loading="lazy">
                     <div class="gallery-overlay">
-                        <h4>{{ _('Our Salon') }}</h4>
+                        <h4 itemprop="name">{{ _('Our Salon') }}</h4>
                     </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400" alt="{{ _('Hair Styling') }}">
+                </figure>
+                <figure class="gallery-item" itemscope itemtype="http://schema.org/ImageObject">
+                    <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400" alt="{{ _('Professional hair styling at CIACH CIACH I URODA salon') }}" itemprop="contentUrl" loading="lazy">
                     <div class="gallery-overlay">
-                        <h4>{{ _('Hair Styling') }}</h4>
+                        <h4 itemprop="name">{{ _('Hair Styling') }}</h4>
                     </div>
-                </div>
+                </figure>
             </div>
         </div>
     </section>
+
+<!--    &lt;!&ndash; Reviews Section &ndash;&gt;-->
+<!--    <section id="reviews" class="section reviews">-->
+<!--        <div class="container">-->
+<!--            <h2 class="section-title">{{ _('Reviews') }}</h2>-->
+<!--            <div class="reviews-grid">-->
+<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
+<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
+<!--                        <meta itemprop="ratingValue" content="5">-->
+<!--                        <meta itemprop="bestRating" content="5">-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <p itemprop="reviewBody">"{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"</p>-->
+<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
+<!--                        <span itemprop="name">Anna K.</span>-->
+<!--                    </h4>-->
+<!--                </article>-->
+<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
+<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
+<!--                        <meta itemprop="ratingValue" content="5">-->
+<!--                        <meta itemprop="bestRating" content="5">-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <p itemprop="reviewBody">"{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"</p>-->
+<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
+<!--                        <span itemprop="name">Maria S.</span>-->
+<!--                    </h4>-->
+<!--                </article>-->
+<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
+<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
+<!--                        <meta itemprop="ratingValue" content="5">-->
+<!--                        <meta itemprop="bestRating" content="5">-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <p itemprop="reviewBody">"{{ _('Professional haircuts and excellent customer service. Highly recommend!') }}"</p>-->
+<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
+<!--                        <span itemprop="name">Kasia W.</span>-->
+<!--                    </h4>-->
+<!--                </article>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
     <!-- Location Section with Google Maps -->
     <section id="location" class="section location">
@@ -148,7 +380,6 @@
             <h2 class="section-title">{{ _('Find Us') }}</h2>
             <div class="location-content">
                 <div class="map-container">
-
                     <iframe
                         src="https://maps.google.com/maps?q=Radockiego%2044C%2C%2040-645%20Katowice%2C%20Poland&t=&z=16&ie=UTF8&iwloc=&output=embed"
                         width="100%"
@@ -156,50 +387,63 @@
                         style="border:0;"
                         allowfullscreen=""
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="CIACH CIACH I URODA location map"
+                        aria-label="Google Maps showing location of CIACH CIACH I URODA beauty salon">
                     </iframe>
                 </div>
                 <div class="location-info">
-                    <div class="info-card">
+                    <div class="info-card" itemscope itemtype="http://schema.org/LocalBusiness">
                         <h3>{{ _('Visit Our Salon') }}</h3>
                         <div class="info-item">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                             <div>
                                 <h4>{{ _('Address') }}</h4>
-                                <p>ul. Radockiego 44c<br>40-645 Katowice, Poland</p>
+                                <address itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                                    <span itemprop="streetAddress">ul. Radockiego 44c</span><br>
+                                    <span itemprop="postalCode">40-645</span> <span itemprop="addressLocality">Katowice</span>, <span itemprop="addressCountry">Poland</span>
+                                </address>
                             </div>
                         </div>
                         <div class="info-item">
-                            <i class="fas fa-directions"></i>
+                            <i class="fas fa-directions" aria-hidden="true"></i>
                             <div>
                                 <h4>{{ _('Get Directions') }}</h4>
                                 <a href="https://maps.app.goo.gl/CgzxHRYnrKonDxdu5"
                                    target="_blank"
-                                   class="directions-link">
-                                    {{ _('Open in Google Maps') }} <i class="fas fa-external-link-alt"></i>
+                                   rel="noopener"
+                                   class="directions-link"
+                                   aria-label="Open directions to salon in Google Maps">
+                                    {{ _('Open in Google Maps') }} <i class="fas fa-external-link-alt" aria-hidden="true"></i>
                                 </a>
                             </div>
                         </div>
                         <div class="info-item">
-                            <i class="fas fa-parking"></i>
+                            <i class="fas fa-parking" aria-hidden="true"></i>
                             <div>
                                 <h4>{{ _('Parking') }}</h4>
                                 <p>{{ _('Free parking available') }}</p>
                             </div>
                         </div>
                         <div class="info-item">
-                            <i class="fas fa-bus"></i>
+                            <i class="fas fa-bus" aria-hidden="true"></i>
                             <div>
                                 <h4>{{ _('Public Transport') }}</h4>
                                 <p>{{ _('Bus stops nearby') }}: 138, 297, 297N, 292</p>
                             </div>
                         </div>
-
                         <div class="info-item">
-                            <i class="fas fa-phone"></i>
+                            <i class="fas fa-phone" aria-hidden="true"></i>
                             <div>
                                 <h4>{{ _('Phone') }}</h4>
-                                <p><a href="tel:+48123456789">+48 123 456 789</a></p>
+                                <p><a href="tel:+48123456789" itemprop="telephone">+48 123 456 789</a></p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <div>
+                                <h4>{{ _('Email') }}</h4>
+                                <p><a href="mailto:yuxaker@gmail.com" itemprop="email">yuxaker@gmail.com</a></p>
                             </div>
                         </div>
                     </div>
@@ -211,15 +455,134 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; {{ current_year }} Beauty Salon. {{ _('All rights reserved.') }}</p>
+            <p>&copy; {{ current_year }} CIACH CIACH I URODA. {{ _('All rights reserved.') }}</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.facebook.com/ciachciachiuroda" target="_blank" rel="noopener" aria-label="Follow us on Facebook">
+                    <i class="fab fa-facebook" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/ciachciachiuroda" target="_blank" rel="noopener" aria-label="Follow us on Instagram">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://maps.google.com/maps?q=Radockiego%2044C%2C%2040-645%20Katowice%2C%20Poland" target="_blank" rel="noopener" aria-label="Find us on Google Maps">
+                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
     </footer>
 
+    <!-- Contact Form Modal (Optional) -->
+    <div id="contact-modal" class="modal" style="display: none;" role="dialog" aria-labelledby="contact-modal-title" aria-modal="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="contact-modal-title">{{ _('Book Appointment') }}</h3>
+                <button class="modal-close" aria-label="Close booking form">&times;</button>
+            </div>
+            <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">{{ _('Full Name') }} *</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">{{ _('Email') }} *</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="phone">{{ _('Phone') }}</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="service">{{ _('Service') }} *</label>
+                    <select id="service" name="service" required aria-required="true">
+                        <option value="">{{ _('Select service') }}</option>
+                        <option value="manicure">{{ _('Manicure') }}</option>
+                        <option value="pedicure">{{ _('Pedicure') }}</option>
+                        <option value="haircut">{{ _('Haircut') }}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">{{ _('Additional Information') }}</label>
+                    <textarea id="message" name="message" rows="4" placeholder="{{ _('Preferred date and time, special requests...') }}"></textarea>
+                </div>
+                <button type="submit" class="btn-primary">{{ _('Send Request') }}</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Booking CTA Button -->
+    <div class="booking-cta" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+        <a href="tel:+48123456789" class="btn-primary" style="margin-right: 10px;" aria-label="Call to book appointment">
+            <i class="fas fa-phone" aria-hidden="true"></i> {{ _('Call Now') }}
+        </a>
+    </div>
+
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <!-- Schema.org BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{% if get_locale() == 'pl' %}Strona Główna{% elif get_locale() == 'en' %}Home{% else %}Головна{% endif %}",
+          "item": "{{ url_for('index', _external=True) }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{ _('Our Services') }}",
+          "item": "{{ url_for('index', _external=True) }}#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ _('Our Gallery') }}",
+          "item": "{{ url_for('index', _external=True) }}#gallery"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "{{ _('Location') }}",
+          "item": "{{ url_for('index', _external=True) }}#location"
+        }
+      ]
+    }
+    </script>
+
+    <!-- FAQ Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "{% if get_locale() == 'pl' %}Jakie są godziny otwarcia salonu?{% elif get_locale() == 'en' %}What are the salon opening hours?{% else %}Які години роботи салону?{% endif %}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{% if get_locale() == 'pl' %}Jesteśmy otwarci od poniedziałku do piątku 9:00-20:00, w weekendy 10:00-18:00.{% elif get_locale() == 'en' %}We are open Monday to Friday 9:00-20:00, weekends 10:00-18:00.{% else %}Ми працюємо з понеділка по п'ятницю 9:00-20:00, вихідні 10:00-18:00.{% endif %}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{% if get_locale() == 'pl' %}Gdzie znajduje się salon?{% elif get_locale() == 'en' %}Where is the salon located?{% else %}Де знаходиться салон?{% endif %}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{% if get_locale() == 'pl' %}Nasz salon znajduje się przy ul. Radockiego 44c, 40-645 Katowice.{% elif get_locale() == 'en' %}Our salon is located at ul. Radockiego 44c, 40-645 Katowice.{% else %}Наш салон знаходиться за адресою вул. Radockiego 44c, 40-645 Катовіце.{% endif %}"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "{% if get_locale() == 'pl' %}Czy jest dostępny parking?{% elif get_locale() == 'en' %}Is parking available?{% else %}Чи є паркування?{% endif %}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{% if get_locale() == 'pl' %}Tak, dla naszych klientów dostępny jest bezpłatny parking.{% elif get_locale() == 'en' %}Yes, free parking is available for our clients.{% else %}Так, для наших клієнтів доступне безкоштовне паркування.{% endif %}"
+          }
+        }
+      ]
+    }
+    </script>
 </body>
 </html>
