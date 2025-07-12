@@ -128,12 +128,23 @@ function initLanguageSelector() {
     const currentLang = document.querySelector('.current-lang');
 
     if (languageSelector && currentLang) {
-        // Handle click on language selector
-        currentLang.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            languageSelector.classList.toggle('active');
-        });
+        // // Handle click on language selector
+        // currentLang.addEventListener('click', function(e) {
+        //     e.preventDefault();
+        //     e.stopPropagation();
+        //     languageSelector.classList.toggle('active');
+        // });
+
+        function toggleDropdown(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          languageSelector.classList.toggle('active');
+        }
+
+        ['click', 'touchstart'].forEach(evt =>
+          currentLang.addEventListener(evt, toggleDropdown)
+        );
+
 
         // Close dropdown when clicking outside
         document.addEventListener('click', function(e) {
@@ -141,6 +152,15 @@ function initLanguageSelector() {
                 languageSelector.classList.remove('active');
             }
         });
+
+        ['click', 'touchstart'].forEach(evt =>
+          document.addEventListener(evt, e => {
+            if (!languageSelector.contains(e.target)) {
+              languageSelector.classList.remove('active');
+            }
+          })
+        );
+
 
         // Prevent dropdown from closing when clicking on language options
         const languageLinks = document.querySelectorAll('.language-dropdown a');
@@ -153,15 +173,6 @@ function initLanguageSelector() {
             });
         });
 
-        // Keyboard navigation for language selector
-        currentLang.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                languageSelector.classList.toggle('active');
-            } else if (e.key === 'Escape') {
-                languageSelector.classList.remove('active');
-            }
-        });
     }
 }
 
