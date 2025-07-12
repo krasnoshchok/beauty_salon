@@ -206,7 +206,7 @@
             <div class="nav-menu">
                 <a href="#services" class="nav-link" aria-label="{{ _('Navigate to services section') }}">{{ _('Our Services') }}</a>
 <!--                <a href="#gallery" class="nav-link" aria-label="{{ _('Navigate to gallery section') }}">{{ _('Our Gallery') }}</a>-->
-<!--                <a href="#reviews" class="nav-link" aria-label="{{ _('Navigate to reviews section') }}">{{ _('Reviews') }}</a>-->
+                <a href="#reviews" class="nav-link" aria-label="{{ _('Navigate to reviews section') }}">{{ _('Reviews') }}</a>
                 <a href="#location" class="nav-link" aria-label="{{ _('Navigate to location section') }}">{{ _('Location') }}</a>
 
                 <!-- Language Selector -->
@@ -349,59 +349,21 @@
 <!--        </div>-->
 <!--    </section>-->
 
-<!--    &lt;!&ndash; Reviews Section &ndash;&gt;-->
-<!--    <section id="reviews" class="section reviews">-->
-<!--        <div class="container">-->
-<!--            <h2 class="section-title">{{ _('Reviews') }}</h2>-->
-<!--            <div class="reviews-grid">-->
-<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
-<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
-<!--                        <meta itemprop="ratingValue" content="5">-->
-<!--                        <meta itemprop="bestRating" content="5">-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                    </div>-->
-<!--                    <p itemprop="reviewBody">"{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"</p>-->
-<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
-<!--                        <span itemprop="name">Anna K.</span>-->
-<!--                    </h4>-->
-<!--                </article>-->
-<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
-<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
-<!--                        <meta itemprop="ratingValue" content="5">-->
-<!--                        <meta itemprop="bestRating" content="5">-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                    </div>-->
-<!--                    <p itemprop="reviewBody">"{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"</p>-->
-<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
-<!--                        <span itemprop="name">Maria S.</span>-->
-<!--                    </h4>-->
-<!--                </article>-->
-<!--                <article class="review-card" itemscope itemtype="http://schema.org/Review">-->
-<!--                    <div class="stars" itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">-->
-<!--                        <meta itemprop="ratingValue" content="5">-->
-<!--                        <meta itemprop="bestRating" content="5">-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                        <i class="fas fa-star" aria-hidden="true"></i>-->
-<!--                    </div>-->
-<!--                    <p itemprop="reviewBody">"{{ _('Professional haircuts and excellent customer service. Highly recommend!') }}"</p>-->
-<!--                    <h4 itemprop="author" itemscope itemtype="http://schema.org/Person">-->
-<!--                        <span itemprop="name">Kasia W.</span>-->
-<!--                    </h4>-->
-<!--                </article>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+
+    <!-- Add this in the Reviews section -->
+    <section id="reviews" class="section reviews">
+        <div class="container">
+            <h2 class="section-title">{{ _('Reviews') }}</h2>
+
+            <!-- Google Reviews Widget -->
+            <div id="google-reviews"></div>
+
+            <!-- Your existing review cards can stay as fallback -->
+            <div class="reviews-grid">
+                <!-- existing review cards -->
+            </div>
+        </div>
+    </section>
 
     <!-- Location Section with Google Maps -->
     <section id="location" class="section location">
@@ -507,5 +469,92 @@
         </a>
     </div>
 
+
+    <script>
+        function initGoogleReviews() {
+            const request = {
+                placeId: 'ChIJvUIOEGbPFkcRXyoJuZA6Qs0', // Replace with your actual Place ID
+                fields: ['name', 'rating', 'reviews', 'user_ratings_total']
+            };
+
+            const service = new google.maps.places.PlacesService(document.createElement('div'));
+
+            service.getDetails(request, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    displayReviews(place);
+                }
+            });
+        }
+
+        function displayReviews(place) {
+            const reviewsContainer = document.getElementById('google-reviews');
+
+            // Display overall rating
+            const ratingHtml = `
+                <div class="google-rating-summary">
+                    <h3>${place.name}</h3>
+                    <div class="rating-stars">
+                        ${getStarRating(place.rating)}
+                        <span class="rating-number">${place.rating}</span>
+                        <span class="rating-count">(${place.user_ratings_total} {{ _('reviews') }})</span>
+                    </div>
+                </div>
+            `;
+
+            reviewsContainer.innerHTML = ratingHtml;
+
+            // Display individual reviews
+            if (place.reviews) {
+                const reviewsGrid = document.createElement('div');
+                reviewsGrid.className = 'reviews-grid';
+
+                place.reviews.slice(0, 5).forEach(review => {
+                    const reviewCard = `
+                        <article class="review-card google-review">
+                            <div class="reviewer-info">
+                                <img src="${review.profile_photo_url}" alt="${review.author_name}" class="reviewer-photo">
+                                <div>
+                                    <h4>${review.author_name}</h4>
+                                    <div class="review-meta">
+                                        ${getStarRating(review.rating)}
+                                        <span class="review-date">${new Date(review.time * 1000).toLocaleDateString()}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>${review.text}</p>
+                            <a href="${review.author_url}" target="_blank" rel="noopener" class="google-review-link">
+                                <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_74x24dp.png" alt="Google" style="height: 16px;">
+                            </a>
+                        </article>
+                    `;
+                    reviewsGrid.innerHTML += reviewCard;
+                });
+
+                reviewsContainer.appendChild(reviewsGrid);
+            }
+        }
+
+        function getStarRating(rating) {
+            const fullStars = Math.floor(rating);
+            const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+            const emptyStars = 5 - fullStars - halfStar;
+
+            let stars = '';
+            for (let i = 0; i < fullStars; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            if (halfStar) {
+                stars += '<i class="fas fa-star-half-alt"></i>';
+            }
+            for (let i = 0; i < emptyStars; i++) {
+                stars += '<i class="far fa-star"></i>';
+            }
+            return stars;
+        }
+    </script>
+    <!-- Google Places API -->
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC73ccvLaTjLdakKj8TsEGtOHMkbxQ2_ag&libraries=places&callback=initGoogleReviews">
+    </script>
 </body>
 </html>
