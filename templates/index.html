@@ -7,6 +7,7 @@
     <!-- Preconnect to external resources -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
     <!-- Open Graph image dimensions -->
     <meta property="og:image:width" content="1200">
@@ -26,8 +27,8 @@
     <!-- Geo Tags -->
     <meta name="geo.region" content="PL-SL">
     <meta name="geo.placename" content="Katowice">
-    <meta name="geo.position" content="50.2649;19.0238">
-    <meta name="ICBM" content="50.2649, 19.0238">
+    <meta name="geo.position" content="50.207960799999995;18.9894532">
+    <meta name="ICBM" content="50.207960799999995, 18.9894532">
     <meta name="google-site-verification" content="your-verification-code">
     <meta name="msvalidate.01" content="your-bing-verification-code">
     <meta property="business:contact_data:street_address" content="ul. Radockiego 44c">
@@ -42,8 +43,6 @@
     <meta property="og:url" content="{{ request.url }}">
     <meta property="og:site_name" content="CIACH CIACH I URODA">
     <meta property="og:image" content="{{ url_for('static', filename='images/salon-og-image.jpg', _external=True) }}">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="CIACH CIACH I URODA - Beauty Salon Interior">
     <meta property="og:locale" content="{% if get_locale() == 'pl' %}pl_PL{% elif get_locale() == 'en' %}en_US{% else %}uk_UA{% endif %}">
 
@@ -56,23 +55,32 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ request.url }}">
 
+
+    <!-- Favicon and App Icons -->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-96x96.png') }}" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='apple-touch-icon.png') }}" />
+    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}" />
+
+    <link rel="icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/svg+xml" sizes="any">
+    <link rel="icon" href="{{ url_for('static', filename='favicon-48x48.png') }}" sizes="48x48">
+
+
+
+
     <!-- Alternate Languages -->
     <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=pl" hreflang="pl">
     <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=en" hreflang="en">
     <link rel="alternate" href="{{ url_for('index', _external=True) }}?lang=uk" hreflang="uk">
     <link rel="alternate" href="{{ url_for('index', _external=True) }}" hreflang="x-default">
 
-    <!-- Favicon and App Icons -->
-    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='favicon-16x16.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='scissors-180.png') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='site.webmanifest') }}">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -101,8 +109,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 50.2649,
-        "longitude": 19.0238
+        "latitude": 50.207960799999995,
+        "longitude": 18.9894532
       },
       "openingHoursSpecification": [
         {
@@ -190,14 +198,6 @@
     }
     </script>
 
-    <!-- Google Analytics (replace with your tracking ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KQ193XKNE"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-7KQ193XKNE');
-    </script>
 </head>
 <body>
     <!-- Navigation -->
@@ -555,6 +555,15 @@
     <!-- Google Places API -->
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC73ccvLaTjLdakKj8TsEGtOHMkbxQ2_ag&libraries=places&callback=initGoogleReviews">
+    </script>
+
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KQ193XKNE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-7KQ193XKNE');
     </script>
 </body>
 </html>
