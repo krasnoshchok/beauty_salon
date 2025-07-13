@@ -65,9 +65,6 @@ translations = {
         'Salon Interior': 'Wnętrze Salonu',
         'Our Salon': 'Nasz Salon',
         'Hair Styling': 'Stylizacja Włosów',
-        'Amazing service! The staff is professional and friendly. My nails have never looked better!': 'Niesamowita obsługa! Personel jest profesjonalny i przyjazny. Moje paznokcie nigdy nie wyglądały lepiej!',
-        'Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.': 'Najlepszy salon piękności w Warszawie! Zawsze wychodzę czując się piękna i odświeżona.',
-        'Professional haircuts and excellent customer service. Highly recommend!': 'Profesjonalne strzyżenie i doskonała obsługa klienta. Gorąco polecam!',
         'All rights reserved.': 'Wszelkie prawa zastrzeżone.'
     },
     'en': {
@@ -127,9 +124,6 @@ translations = {
         'Salon Interior': 'Salon Interior',
         'Our Salon': 'Our Salon',
         'Hair Styling': 'Hair Styling',
-        'Amazing service! The staff is professional and friendly. My nails have never looked better!': 'Amazing service! The staff is professional and friendly. My nails have never looked better!',
-        'Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.': 'Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.',
-        'Professional haircuts and excellent customer service. Highly recommend!': 'Professional haircuts and excellent customer service. Highly recommend!',
         'All rights reserved.': 'All rights reserved.'
     },
     'uk': {
@@ -189,9 +183,6 @@ translations = {
         'Salon Interior': 'Інтер\'єр Салону',
         'Our Salon': 'Наш Салон',
         'Hair Styling': 'Укладка Волосся',
-        'Amazing service! The staff is professional and friendly. My nails have never looked better!': 'Чудовий сервіс! Персонал професійний та привітний. Мої нігті ніколи не виглядали краще!',
-        'Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.': 'Найкращий салон краси у Варшаві! Я завжди виходжу, відчуваючи себе красивою та оновленою.',
-        'Professional haircuts and excellent customer service. Highly recommend!': 'Професійні стрижки та відмінне обслуговування клієнтів. Дуже рекомендую!',
         'All rights reserved.': 'Всі права захищені.'
     }
 }

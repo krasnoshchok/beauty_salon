@@ -153,45 +153,13 @@
           }
         ]
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "127",
-        "bestRating": "5",
-        "worstRating": "1"
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Anna K."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "{{ _('Amazing service! The staff is professional and friendly. My nails have never looked better!') }}"
-        },
-        {
-          "@type": "Review",
-          "author": {
-            "@type": "Person",
-            "name": "Maria S."
-          },
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5"
-          },
-          "reviewBody": "{{ _('Best beauty salon in Warsaw! I always leave feeling beautiful and refreshed.') }}"
-        }
-      ],
       "sameAs": [
         "https://www.facebook.com/ciachciachiuroda",
         "https://www.instagram.com/ciachciachiuroda",
         "https://maps.google.com/maps?q=Radockiego%2044C%2C%2040-645%20Katowice%2C%20Poland"
       ]
     }
+
     </script>
 
 </head>
@@ -345,7 +313,6 @@
 <!--        </div>-->
 <!--    </section>-->
 
-
     <!-- Add this in the Reviews section -->
     <section id="reviews" class="section reviews">
         <div class="container">
@@ -471,6 +438,7 @@
             const request = {
                 placeId: 'ChIJvUIOEGbPFkcRXyoJuZA6Qs0', // Replace with your actual Place ID
                 fields: ['name', 'rating', 'reviews', 'user_ratings_total']
+                // language: 'pl' // Force Polish language for reviews
             };
 
             const service = new google.maps.places.PlacesService(document.createElement('div'));
