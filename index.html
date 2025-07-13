@@ -53,7 +53,7 @@
     <meta name="twitter:image" content="{{ url_for('static', filename='images/salon-og-image.jpg', _external=True) }}">
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="{{ request.url }}">
+    <link rel="canonical" href="{{ url_for('index', _external=True) }}">
 
 
     <!-- Favicon and App Icons -->
@@ -327,6 +327,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- Location Section with Google Maps -->
     <section id="location" class="section location">
