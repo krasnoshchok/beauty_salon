@@ -195,6 +195,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         {% elif get_locale() == 'en' %}🇬🇧 EN
                         {% else %}🇺🇦 UA{% endif %}
                     </button>
+
                     <div class="language-dropdown" role="menu">
                         <a href="{{ url_for('set_language', language='pl') }}" role="menuitem" hreflang="pl">🇵🇱 Polski</a>
                         <a href="{{ url_for('set_language', language='en') }}" role="menuitem" hreflang="en">🇬🇧 English</a>

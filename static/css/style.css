@@ -95,7 +95,7 @@ body {
 }
 
 /* Language Selector */
-/* ========== LANGUAGE SELECTOR ========== */
+/* ========== FIXED LANGUAGE SELECTOR ========== */
 .language-selector {
     position: relative;
     cursor: pointer;
@@ -166,7 +166,6 @@ body {
 .language-dropdown a:last-child {
   border-radius: 0 0 10px 10px;
 }
-
 
 /* Hero Section */
 .hero {

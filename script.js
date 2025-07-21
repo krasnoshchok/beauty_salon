@@ -123,6 +123,7 @@ function initSmoothScrolling() {
 }
 
 // Language selector initialization
+
 function initLanguageSelector() {
   const languageSelector = document.querySelector('.language-selector');
   const currentLang      = document.querySelector('.current-lang');
