@@ -171,6 +171,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
     </script>
+    <script type="text/javascript" src="https://booksy.com/widget/code.js?id=308267&country=pl&lang=pl"></script>
 
 </head>
 <body>
@@ -219,7 +220,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--            </div>-->
             <div class="contact-info-item">
                 <i class="fas fa-clock" aria-hidden="true"></i>
-                <span>{{ _('Mon-Fri') }}: 10:00-19:00</span>
+                <span>{{ _('Mon-Fri') }}: 9:00-20:00, {{ _('Sat-Sun') }}: 10:00-18:00</span>
             </div>
         </div>
         <div class="hero-content">
@@ -443,11 +444,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </footer>
 
     <!-- Call Me Button -->
-    <div class="booking-cta" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-        <a href="tel:+48452420076" class="btn-primary" style="margin-right: 10px;" aria-label="Call to book appointment">
-            <i class="fas fa-phone" aria-hidden="true"></i> {{ _('Call Now') }}
-        </a>
+    <div class="fixed-buttons" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Booksy Booking Button -->
+        <div class="booking-cta">
+            <a href="#" id="booksy-button" class="btn-primary" aria-label="Book appointment online">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i> {{ _('Book Online') }}
+            </a>
+        </div>
+
+        <!-- Call Button (existing) -->
+        <div class="booking-cta">
+            <a href="tel:+48452420076" class="btn-primary" aria-label="Call to book appointment">
+                <i class="fas fa-phone" aria-hidden="true"></i> {{ _('Call Now') }}
+            </a>
+        </div>
     </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize Booksy widget when button is clicked
+        document.getElementById('booksy-button').addEventListener('click', function() {
+            // Trigger Booksy widget
+            if (typeof Booksy !== 'undefined' && Booksy.widget) {
+                Booksy.widget.show();
+            } else {
+                // Fallback - redirect to Booksy page if widget fails
+                window.open('https://booksy.com/pl-pl/308267_ciach-ciach-i-uroda_salon-kosmetyczny_5965_katowice', '_blank');
+            }
+        });
+    });
+    </script>
 
 
     <script>
