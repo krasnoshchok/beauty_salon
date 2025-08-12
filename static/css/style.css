@@ -741,7 +741,6 @@ body {
     }
 }
 
-
 /* Fixed buttons container */
 .fixed-buttons {
     position: fixed;
@@ -769,9 +768,12 @@ body {
     text-align: center !important;
 
     /* Text properties */
-    font-size: 14px !important;
+    font-family: 'Poppins', sans-serif !important;  /* Explicit font family */
+    font-size: 13px !important;
     font-weight: 600 !important;
     white-space: nowrap !important;
+    letter-spacing: 0 !important;                    /* Reset letter spacing */
+    text-transform: none !important;                 /* Reset text transform */
 
     /* Button reset for <button> elements */
     border: none !important;
