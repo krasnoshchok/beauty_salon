@@ -182,7 +182,7 @@ translations = {
         'Hybrid pedicure': 'Гібридний педикюр – 150 zł',
         'Hybrid pedicure (toes only)': 'Гібридний педикюр (тільки пальці) – 130 zł',
         'Call Now': 'Подзвонити',
-        'Book Online': 'Забронювати Онлайн',
+        'Book Online': 'Забронювати',
         'Salon Interior': 'Інтер\'єр Салону',
         'Our Salon': 'Наш Салон',
         'Hair Styling': 'Укладка Волосся',
