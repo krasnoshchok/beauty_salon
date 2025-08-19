@@ -236,6 +236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <div class="container">
             <h2 class="section-title">{{ _('Our Services') }}</h2>
             <div class="services-grid">
+                <!-- Haircut Card -->
                 <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
                         <i class="fas fa-cut" aria-hidden="true"></i>
@@ -257,6 +258,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li>{{ _('Curls') }}</li>
                     </ul>
                 </article>
+
+                <!-- Manicure Card -->
                 <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
                         <i class="fas fa-hand-sparkles" aria-hidden="true"></i>
@@ -274,6 +277,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <li>{{ _('Nail repair (2–3 fingers)') }}</li>
                     </ul>
                 </article>
+
+                <!-- Pedicure Card -->
                 <article class="service-card" itemscope itemtype="http://schema.org/Service">
                     <div class="service-icon">
                         <i class="fas fa-shoe-prints" aria-hidden="true"></i>
@@ -287,9 +292,120 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </ul>
                 </article>
 
+                <!-- NEW: Massage Card -->
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                    <div class="service-icon">
+                        <i class="fas fa-spa" aria-hidden="true"></i>
+                    </div>
+                    <h3 itemprop="name">{{ _('Massage') }}</h3>
+                    <p itemprop="description">{{ _('Relaxing and therapeutic massage treatments') }}</p>
+                    <ul>
+                        <li>{{ _('Classic Massage') }}</li>
+                        <li>{{ _('Relaxation Massage') }}</li>
+                        <li>{{ _('Lymphatic Drainage') }}</li>
+                        <li>{{ _('Sports Massage') }}</li>
+                        <li>{{ _('Anti-cellulite Honey Massage') }}</li>
+                        <li>{{ _('Chinese Cupping Massage') }}</li>
+                        <li>{{ _('Kobido Massage') }}</li>
+                        <li>{{ _('Sinus Massage') }}</li>
+                        <li>{{ _('Vagus Nerve Massage') }}</li>
+                        <li>{{ _('Neck and Chest') }}</li>
+                    </ul>
+                </article>
+
+                <!-- NEW: Cosmetic Treatments Card -->
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                    <div class="service-icon">
+                        <i class="fas fa-magic" aria-hidden="true"></i>
+                    </div>
+                    <h3 itemprop="name">{{ _('Cosmetic Treatments') }}</h3>
+                    <p itemprop="description">{{ _('Professional facial and beauty treatments') }}</p>
+                    <ul>
+                        <li>{{ _('Kobido with Algae Mask') }}</li>
+                        <li>{{ _('Relaxing Facial Treatment') }}</li>
+                        <li>{{ _('Eyebrow Waxing') }}</li>
+                        <li>{{ _('Eyebrow Shaping and Tinting') }}</li>
+                        <li>{{ _('Eyebrow Henna') }}</li>
+                    </ul>
+                </article>
+
+                <!-- NEW: Depilation Card -->
+                <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                    <div class="service-icon">
+                        <i class="fas fa-leaf" aria-hidden="true"></i>
+                    </div>
+                    <h3 itemprop="name">{{ _('Depilation') }}</h3>
+                    <p itemprop="description">{{ _('Professional waxing and sugaring services') }}</p>
+                    <ul>
+                        <li>{{ _('Full Legs Waxing') }}</li>
+                        <li>{{ _('Half Legs Waxing') }}</li>
+                        <li>{{ _('Full Arms Waxing') }}</li>
+                        <li>{{ _('Half Arms Waxing') }}</li>
+                        <li>{{ _('Underarms Waxing') }}</li>
+                        <li>{{ _('Upper Lip Waxing') }}</li>
+                    </ul>
+                </article>
             </div>
         </div>
     </section>
+<!--    <section id="services" class="section services">-->
+<!--        <div class="container">-->
+<!--            <h2 class="section-title">{{ _('Our Services') }}</h2>-->
+<!--            <div class="services-grid">-->
+<!--                <article class="service-card" itemscope itemtype="http://schema.org/Service">-->
+<!--                    <div class="service-icon">-->
+<!--                        <i class="fas fa-cut" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <h3 itemprop="name">{{ _('Haircut') }}</h3>-->
+<!--                    <p itemprop="description">{{ _('Stylish haircuts and professional styling') }}</p>-->
+<!--                    <ul>-->
+<!--                        <li>{{ _('Men barber cut') }}</li>-->
+<!--                        <li>{{ _('Buzz cut') }}</li>-->
+<!--                        <li>{{ _('Beard') }}</li>-->
+<!--                        <li>{{ _('Combo') }}</li>-->
+<!--                        <li>{{ _('Clipper cut (one length)') }}</li>-->
+<!--                        <li>{{ _('Mens long hair haircut') }}</li>-->
+<!--                        <li>{{ _('Kids haircut (up to 10 years)') }}</li>-->
+<!--                        <li>{{ _('Womens haircut') }}</li>-->
+<!--                        <li>{{ _('Bangs trim') }}</li>-->
+<!--                        <li>{{ _('Hair ends trimming') }}</li>-->
+<!--                        <li>{{ _('Styling') }}</li>-->
+<!--                        <li>{{ _('Curls') }}</li>-->
+<!--                    </ul>-->
+<!--                </article>-->
+<!--                <article class="service-card" itemscope itemtype="http://schema.org/Service">-->
+<!--                    <div class="service-icon">-->
+<!--                        <i class="fas fa-hand-sparkles" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <h3 itemprop="name">{{ _('Manicure') }}</h3>-->
+<!--                    <p itemprop="description">{{ _('Professional nail care and beautiful designs') }}</p>-->
+<!--                    <ul>-->
+<!--                        <li>{{ _('Classic Manicure') }}</li>-->
+<!--                        <li>{{ _('Hybrid Manicure') }}</li>-->
+<!--                        <li>{{ _('Gel on natural nails') }}</li>-->
+<!--                        <li>{{ _('Hybrid polish removal (other stylist)') }}</li>-->
+<!--                        <li>{{ _('Gel removal (other stylist)') }}</li>-->
+<!--                        <li>{{ _('Nail decoration') }}</li>-->
+<!--                        <li>{{ _('Nail repair (one nail)') }}</li>-->
+<!--                        <li>{{ _('Nail repair (2–3 fingers)') }}</li>-->
+<!--                    </ul>-->
+<!--                </article>-->
+<!--                <article class="service-card" itemscope itemtype="http://schema.org/Service">-->
+<!--                    <div class="service-icon">-->
+<!--                        <i class="fas fa-shoe-prints" aria-hidden="true"></i>-->
+<!--                    </div>-->
+<!--                    <h3 itemprop="name">{{ _('Pedicure') }}</h3>-->
+<!--                    <p itemprop="description">{{ _('Complete foot care for health and beauty') }}</p>-->
+<!--                    <ul>-->
+<!--                        <li>{{ _('Cosmetic pedicure') }}</li>-->
+<!--                        <li>{{ _('Hybrid pedicure') }}</li>-->
+<!--                        <li>{{ _('Hybrid pedicure (toes only)') }}</li>-->
+<!--                    </ul>-->
+<!--                </article>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 
 <!--    &lt;!&ndash; Gallery Section &ndash;&gt;-->
 <!--    <section id="gallery" class="section gallery">-->
@@ -330,7 +446,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!--        </div>-->
 <!--    </section>-->
 
-    <!-- Add this in the Reviews section -->
     <section id="reviews" class="section reviews">
         <div class="container">
             <h2 class="section-title">{{ _('Reviews') }}</h2>

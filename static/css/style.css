@@ -21,6 +21,7 @@ body {
     color: var(--dark-color);
     overflow-x: hidden;
     padding-top: 80px;
+    background: var(--light-color); /* Add this - light grey background */
 }
 
 .container {
@@ -267,6 +268,7 @@ body {
 /* Sections */
 .section {
     padding: 5rem 0;
+    background: var(--light-color); /* Default light grey for all sections */
 }
 
 .section-title {
@@ -290,76 +292,275 @@ body {
 }
 
 /* Services Section */
+/* Enhanced Services Section */
+.services {
+    background: var(--light-color); /* Change from black gradient to light grey */
+    position: relative;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,0,0,0.03) 0%, transparent 70%); /* Changed to dark subtle effect */
+    animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(-30px, -30px) rotate(180deg); }
+}
+
+/* Enhanced Services Grid */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 2rem 0;
 }
 
+/* Enhanced Service Cards - Dark Theme */
 .service-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* White/light cards on grey background */
+    border-radius: 25px;
+    padding: 2.5rem;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.1),
+        0 1px 3px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(255,255,255,0.9);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-align: center;
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(0,0,0,0.05);
 }
 
 .service-card::before {
     content: '';
     position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #f7b731, #5f27cd, #ff6b6b);
+    background-size: 300% 300%;
+    border-radius: 25px;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.service-card:hover::before {
+    opacity: 0.3;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 5px;
-    background: var(--gradient);
+    height: 100%;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.service-card:hover::after {
+    transform: translateX(100%);
 }
 
 .service-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 2px 5px rgba(0, 0, 0, 0.1),
+        inset 0 0 0 1px rgba(255,255,255,1);
+    background: linear-gradient(145deg, #ffffff, #fafafa);
 }
 
+/* Enhanced Service Icons - Keep colorful gradients for contrast */
 .service-icon {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 1.5rem;
-    background: var(--gradient);
-    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, var(--dark-color), #4a4a4a); /* Dark icons for contrast */
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    animation: morphing 8s infinite;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.2),
+        inset 0 0 20px rgba(255,255,255,0.2);
+    border: 2px solid rgba(0,0,0,0.1);
+}
+
+@keyframes morphing {
+    0%, 100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+        transform: rotate(0deg);
+    }
+    25% {
+        border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%;
+        transform: rotate(90deg);
+    }
+    50% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+        transform: rotate(180deg);
+    }
+    75% {
+        border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%;
+        transform: rotate(270deg);
+    }
 }
 
 .service-icon i {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: white;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.5));
+    animation: pulse 2s infinite;
 }
 
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Enhanced Service Card Headings - White text for contrast */
 .service-card h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
-    color: var(--dark-color);
+    color: var(--dark-color); /* Dark text on light cards */
+    position: relative;
+    display: inline-block;
 }
 
+.service-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.5; width: 50px; }
+    50% { opacity: 1; width: 80px; }
+}
+
+/* Service descriptions - Light gray for readability */
 .service-card p {
-    color: #666;
+    color: #666; /* Medium grey for good readability */
     margin-bottom: 1.5rem;
 }
 
+/* Enhanced Service Lists - Light text on dark background */
 .service-card ul {
     list-style: none;
     text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.service-card ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.service-card ul::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05);
+    border-radius: 10px;
+}
+
+.service-card ul::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #ccc, #aaa);
+    border-radius: 10px;
 }
 
 .service-card ul li {
-    padding: 0.5rem 0;
-    color: #555;
+    padding: 0.8rem 0;
+    color: #555; /* Dark grey text */
     border-bottom: 1px solid #eee;
+    background: linear-gradient(90deg, transparent 0%, rgba(78,205,196,0.05) 50%, transparent 100%);
+    background-size: 0% 100%;
+    transition: all 0.3s ease;
+    position: relative;
+    padding-left: 25px;
 }
+
+.service-card ul li::before {
+    content: '✨';
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.service-card:hover ul li::before {
+    opacity: 0.7;
+    transform: translateX(0);
+}
+
+.service-card ul li:hover {
+    background-size: 100% 100%;
+    color: var(--dark-color);
+    padding-left: 30px;
+    font-weight: 500;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Section Title - White for contrast */
+.services .section-title {
+    color: var(--dark-color); /* Dark text on light background */
+}
+
+.services .section-title::after {
+    background: var(--gradient); /* Keep the black gradient for the underline */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .service-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .service-icon i {
+        font-size: 2.5rem;
+    }
+
+    .service-card h3 {
+        font-size: 1.8rem;
+    }
+}
+
+
+
 
 /* Gallery Section */
 .gallery {
@@ -560,7 +761,6 @@ body {
 }
 
 .social-links a {
-    display: inline-block;
     width: 40px;
     height: 40px;
     background: white;
@@ -855,4 +1055,9 @@ body {
         margin-right: 4px !important;
         font-size: 12px !important;
     }
+}
+
+.reviews {
+    background: var(--light-color);
+    padding: 5rem 0;
 }
