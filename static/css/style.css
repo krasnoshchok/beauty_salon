@@ -21,7 +21,7 @@ body {
     color: var(--dark-color);
     overflow-x: hidden;
     padding-top: 80px;
-    background: var(--light-color); /* Add this - light grey background */
+    background: var(--light-color);
 }
 
 .container {
