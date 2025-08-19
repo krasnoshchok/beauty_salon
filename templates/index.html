@@ -687,5 +687,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       gtag('js', new Date());
       gtag('config', 'G-7KQ193XKNE');
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const langSelector = document.querySelector('.language-selector');
+          const currentLang = langSelector.querySelector('.current-lang');
+
+          // Toggle dropdown on click
+          currentLang.addEventListener('click', function(e) {
+            e.stopPropagation();
+            langSelector.classList.toggle('active');
+          });
+
+          // Close when clicking outside
+          document.addEventListener('click', function(e) {
+            if (!langSelector.contains(e.target)) {
+              langSelector.classList.remove('active');
+            }
+          });
+
+          // Close when choosing an option
+          langSelector.querySelectorAll('.language-dropdown a').forEach(option => {
+            option.addEventListener('click', () => {
+              langSelector.classList.remove('active');
+            });
+          });
+        });
+    </script>
 </body>
 </html>

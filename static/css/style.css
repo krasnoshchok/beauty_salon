@@ -96,7 +96,6 @@ body {
 }
 
 /* Language Selector */
-/* ========== FIXED LANGUAGE SELECTOR ========== */
 .language-selector {
     position: relative;
     cursor: pointer;
@@ -136,8 +135,7 @@ body {
   z-index: 1001;
 }
 
-/* Show when hovered (desktop) or when JS toggles `.active` (mobile) */
-.language-selector:hover .language-dropdown,
+/* Show dropdown when .active is applied */
 .language-selector.active .language-dropdown {
   display: block;
   opacity: 1;
