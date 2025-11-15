@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for, make_response
 import os
 from datetime import datetime
+from flask import send_from_directory
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only-for-local')
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year caching
 
 # Translations dictionary
 translations = {
@@ -291,6 +293,7 @@ app.jinja_env.globals.update(current_year=datetime.now().year)
 def index():
     return render_template('index.html')
 
+
 @app.route('/set_language/<language>')
 def set_language(language):
     if language in ['pl', 'en', 'uk']:
@@ -319,6 +322,7 @@ def sitemap():
 def robots():
     return send_from_directory('static', 'robots.txt')
 
+
 @app.after_request
 def add_security_headers(response):
     response.headers['X-Content-Type-Options'] = 'nosniff'
@@ -327,30 +331,6 @@ def add_security_headers(response):
     response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'
     return response
 
-# Add caching
-from flask import send_from_directory
-@app.route('/static/<path:path>')
-def send_static(path):
-    response = send_from_directory('static', path)
-    response.headers['Cache-Control'] = 'public, max-age=31536000'
-    return response
 
 if __name__ == '__main__':
-    # Create necessary directories
-    os.makedirs('static/css', exist_ok=True)
-    os.makedirs('static/js', exist_ok=True)
-    os.makedirs('templates', exist_ok=True)
-
-    # Create CSS file
-    with open('static/css/style.css', 'w', encoding='utf-8') as f:
-        f.write(open('style.css', 'r', encoding='utf-8').read() if os.path.exists('style.css') else '')
-
-    # Create JS file
-    with open('static/js/script.js', 'w', encoding='utf-8') as f:
-        f.write(open('script.js', 'r', encoding='utf-8').read() if os.path.exists('script.js') else '')
-
-    # Create HTML template
-    with open('templates/index.html', 'w', encoding='utf-8') as f:
-        f.write(open('index.html', 'r', encoding='utf-8').read() if os.path.exists('index.html') else '')
-
-    app.run()
+    app.run(debug=True)
