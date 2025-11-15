@@ -3,7 +3,7 @@ import os
 from datetime import datetime
 
 app = Flask(__name__)
-app.secret_key = 'my-secret'
+app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only-for-local')
 
 # Translations dictionary
 translations = {
