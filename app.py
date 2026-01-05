@@ -8,6 +8,13 @@ app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only-for-local')
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year caching
 
+MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
+
+
+@app.context_processor
+def inject_google_maps_api():
+    return dict(google_maps_api_key=MAPS_API_KEY)
+
 
 def get_locale():
     return session.get('language', 'pl')
