@@ -67,5 +67,11 @@ def add_security_headers(response):
     return response
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    # Not existing page template
+    return render_template('404.html'), 404
+
+
 if __name__ == '__main__':
     app.run(debug=True)

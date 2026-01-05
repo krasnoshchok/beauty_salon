@@ -88,7 +88,10 @@ translations = {
         'Full Arms Waxing': 'Depilacja ręce - całość – 90 zł+',
         'Half Arms Waxing': 'Depilacja ręce - połowa – 60 zł',
         'Underarms Waxing': 'Depilacja pachy – 40 zł+',
-        'Upper Lip Waxing': 'Depilacja wąsik – 40 zł+'
+        'Upper Lip Waxing': 'Depilacja wąsik – 40 zł+',
+        'Page Not Found': 'Strona nie znaleziona',
+        'Oops! The page you are looking for does not exist.': 'Ups! Strona, której szukasz, nie istnieje.',
+        'Go Back Home': 'Wróć do strony głównej'
     },
     'en': {
         'Our Contacts': 'Our Contacts',
@@ -175,7 +178,10 @@ translations = {
         'Full Arms Waxing': 'Full Arms Waxing – 90 zł+',
         'Half Arms Waxing': 'Half Arms Waxing – 60 zł',
         'Underarms Waxing': 'Underarms Waxing – 40 zł+',
-        'Upper Lip Waxing': 'Upper Lip Waxing – 40 zł+'
+        'Upper Lip Waxing': 'Upper Lip Waxing – 40 zł+',
+        'Page Not Found': 'Page Not Found',
+        'Oops! The page you are looking for does not exist.': 'Oops! The page you are looking for does not exist.',
+        'Go Back Home': 'Go Back Home'
     },
     'uk': {
         'Our Contacts': 'Наші Контакти',
@@ -262,6 +268,9 @@ translations = {
         'Full Arms Waxing': 'Депіляція рук повністю – 90 zł+',
         'Half Arms Waxing': 'Депіляція половини рук – 60 zł',
         'Underarms Waxing': 'Депіляція пахв – 40 zł+',
-        'Upper Lip Waxing': 'Депіляція верхньої губи – 40 zł+'
+        'Upper Lip Waxing': 'Депіляція верхньої губи – 40 zł+',
+        'Page Not Found': 'Сторінку не знайдено',
+        'Oops! The page you are looking for does not exist.': 'Упс! Сторінка, яку ви шукаєте, не існує.',
+        'Go Back Home': 'Повернутися на головну'
     }
 }
