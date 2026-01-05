@@ -169,7 +169,7 @@ body {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: url('https://lh3.googleusercontent.com/pw/AP1GczNQcik3r2kfqaZFoRNEpB46OmVB1FqQL8f6PvkCfN-XTv5MNDJjrn-mDxBYkJRI1iBdpjB_PQPABQwOd2R2FRIBk7JZUGc6D7oALauna5ewtVpflNR58kaw-yAQCdV4VL4ioC-husrfrlfE-IUSXqcFXQ=w1944-h1458-s-no?authuser=0') center/cover;
+    background: url('/static/images/hero-background.jpg') center/cover;
     position: relative;
     display: flex;
     align-items: center;
