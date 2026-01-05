@@ -1059,3 +1059,120 @@ body {
     background: var(--light-color);
     padding: 5rem 0;
 }
+
+/* --- New Services Tabs System --- */
+
+/* Контейнер для кнопок навігації */
+.services-tabs-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 3rem;
+    padding: 0 10px;
+}
+
+/* Стиль кнопок категорій */
+.tab-btn {
+    padding: 12px 25px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 2px solid transparent;
+    border-radius: 50px;
+    background: #fff;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.tab-btn i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Ховер ефект */
+.tab-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-color);
+}
+
+/* Активна кнопка (вибрана категорія) */
+.tab-btn.active {
+    background: var(--gradient);
+    color: white;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn.active i {
+    color: white;
+}
+
+/* Контейнер для контенту послуг */
+.services-content-wrapper {
+    position: relative;
+    min-height: 400px; /* Запобігає стрибкам висоти */
+    max-width: 800px;  /* Робимо картку компактнішою по ширині */
+    margin: 0 auto;
+}
+
+/* Приховуємо всі картки за замовчуванням */
+.service-tab-content {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Показуємо активну картку */
+.service-tab-content.active {
+    display: block;
+}
+
+/* Модифікація існуючої картки для нового вигляду */
+.service-tab-content .service-card {
+    /* Скидаємо деякі старі стилі, щоб вони пасували до режиму "одна картка" */
+    transform: none !important;
+    margin: 0 auto;
+    background: white;
+}
+
+/* Робимо список послуг всередині картки більш читабельним (у дві колонки) */
+@media (min-width: 768px) {
+    .service-card ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Дві колонки */
+        gap: 10px 30px;
+        text-align: left;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивність для мобільних */
+@media (max-width: 768px) {
+    .services-tabs-container {
+        gap: 10px;
+        overflow-x: auto; /* Дозволяє скролити кнопки, якщо їх багато */
+        justify-content: flex-start;
+        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+        white-space: nowrap; /* Текст в один рядок */
+    }
+
+    .service-card ul {
+        grid-template-columns: 1fr; /* Одна колонка на мобільному */
+    }
+}
