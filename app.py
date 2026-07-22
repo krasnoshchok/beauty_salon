@@ -13,6 +13,17 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 31536000  # 1 year caching
 
 MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY')
 
+STYLE_CSS_PATH = os.path.join(app.root_path, 'static', 'css', 'style.css')
+
+
+def get_css_version():
+    """Mtime of style.css, used as a cache-busting query param so the 1-year
+    static file cache doesn't serve stale CSS after a deploy."""
+    try:
+        return int(os.path.getmtime(STYLE_CSS_PATH))
+    except OSError:
+        return 0
+
 
 @app.context_processor
 def inject_google_maps_api():
@@ -44,6 +55,7 @@ app.jinja_env.globals.update(_=get_translation)
 app.jinja_env.globals.update(get_locale=get_locale)
 app.jinja_env.globals.update(current_year=datetime.now().year)
 app.jinja_env.globals.update(service_item=service_item)
+app.jinja_env.globals.update(css_version=get_css_version)
 
 
 @app.route('/')
