@@ -390,7 +390,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             <h2 class="section-title">{{ _('Reviews') }}</h2>
 
             <!-- Google Reviews Widget -->
-            <div id="google-reviews"></div>
+            <div id="google-reviews">
+                <div class="reviews-placeholder">
+                    <div class="reviews-placeholder-icon">
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                        <i class="fas fa-star reviews-placeholder-star reviews-placeholder-star--1" aria-hidden="true"></i>
+                        <i class="fas fa-star reviews-placeholder-star reviews-placeholder-star--2" aria-hidden="true"></i>
+                        <i class="fas fa-star reviews-placeholder-star reviews-placeholder-star--3" aria-hidden="true"></i>
+                    </div>
+                    <h3>{{ _('Google Reviews Coming Soon') }}</h3>
+                    <p>{{ _('We are getting our Google Reviews connected. Check back shortly to see what our clients are saying!') }}</p>
+                </div>
+            </div>
 
             <!-- Your existing review cards can stay as fallback -->
             <div class="reviews-grid">
@@ -614,9 +625,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
     </script>
     <!-- Google Places API -->
+    {% if google_maps_api_key %}
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places&callback=initGoogleReviews">
     </script>
+    {% endif %}
 
     <!-- Google Analytics (replace with your tracking ID) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7KQ193XKNE"></script>
