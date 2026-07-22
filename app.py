@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, session, redirect, url_for, make_response
 import os
+import re
 from datetime import datetime
 from flask import send_from_directory
 from modules.translations import translations
+
+PRICE_SEPARATOR_RE = re.compile(r'\s[–-]\s')
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'dev-key-only-for-local')
@@ -25,10 +28,22 @@ def get_translation(key):
     return translations.get(locale, {}).get(key, key)
 
 
+def service_item(key):
+    """Split a translated 'Name – Price' string into separate parts for display."""
+    text = get_translation(key)
+    match = None
+    for match in PRICE_SEPARATOR_RE.finditer(text):
+        pass
+    if match:
+        return {'name': text[:match.start()].strip(), 'price': text[match.end():].strip()}
+    return {'name': text.strip(), 'price': ''}
+
+
 # Make translation function available in templates
 app.jinja_env.globals.update(_=get_translation)
 app.jinja_env.globals.update(get_locale=get_locale)
 app.jinja_env.globals.update(current_year=datetime.now().year)
+app.jinja_env.globals.update(service_item=service_item)
 
 
 @app.route('/')

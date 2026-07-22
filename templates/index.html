@@ -229,119 +229,158 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </header>
 
     <!-- Services Section -->
+    {% macro price_item(key) %}
+    {% set item = service_item(key) %}
+    <li><span class="service-name">{{ item.name }}</span>{% if item.price %}<span class="service-price">{{ item.price }}</span>{% endif %}</li>
+    {% endmacro %}
     <section id="services" class="section services">
         <div class="container">
             <h2 class="section-title">{{ _('Our Services') }}</h2>
-            <div class="services-grid">
-                <!-- Haircut Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-cut" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Haircut') }}</h3>
-                    <p itemprop="description">{{ _('Stylish haircuts and professional styling') }}</p>
-                    <ul>
-                        <li>{{ _('Men barber cut') }}</li>
-                        <li>{{ _('Buzz cut') }}</li>
-                        <li>{{ _('Beard') }}</li>
-                        <li>{{ _('Combo') }}</li>
-                        <li>{{ _('Clipper cut (one length)') }}</li>
-                        <li>{{ _('Mens long hair haircut') }}</li>
-                        <li>{{ _('Kids haircut (up to 10 years)') }}</li>
-                        <li>{{ _('Womens haircut') }}</li>
-                        <li>{{ _('Bangs trim') }}</li>
-                        <li>{{ _('Hair ends trimming') }}</li>
-                        <li>{{ _('Styling') }}</li>
-                        <li>{{ _('Curls') }}</li>
-                    </ul>
-                </article>
 
-                <!-- Manicure Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-hand-sparkles" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Manicure') }}</h3>
-                    <p itemprop="description">{{ _('Professional nail care and beautiful designs') }}</p>
-                    <ul>
-                        <li>{{ _('Classic Manicure') }}</li>
-                        <li>{{ _('Hybrid Manicure') }}</li>
-                        <li>{{ _('Gel on natural nails') }}</li>
-                        <li>{{ _('Hybrid polish removal (other stylist)') }}</li>
-                        <li>{{ _('Gel removal (other stylist)') }}</li>
-                        <li>{{ _('Nail decoration') }}</li>
-                        <li>{{ _('Nail repair (one nail)') }}</li>
-                        <li>{{ _('Nail repair (2–3 fingers)') }}</li>
-                    </ul>
-                </article>
+            <!-- Category Tabs -->
+            <div class="services-tabs-container" role="tablist" aria-label="{{ _('Our Services') }}">
+                <button type="button" class="tab-btn active" data-tab="haircut" role="tab" aria-selected="true" aria-controls="tab-haircut" id="tabbtn-haircut">
+                    <i class="fas fa-cut" aria-hidden="true"></i> {{ _('Haircut') }}
+                </button>
+                <button type="button" class="tab-btn" data-tab="manicure" role="tab" aria-selected="false" aria-controls="tab-manicure" id="tabbtn-manicure">
+                    <i class="fas fa-hand-sparkles" aria-hidden="true"></i> {{ _('Manicure') }}
+                </button>
+                <button type="button" class="tab-btn" data-tab="pedicure" role="tab" aria-selected="false" aria-controls="tab-pedicure" id="tabbtn-pedicure">
+                    <i class="fas fa-shoe-prints" aria-hidden="true"></i> {{ _('Pedicure') }}
+                </button>
+                <button type="button" class="tab-btn" data-tab="massage" role="tab" aria-selected="false" aria-controls="tab-massage" id="tabbtn-massage">
+                    <i class="fas fa-spa" aria-hidden="true"></i> {{ _('Massage') }}
+                </button>
+                <button type="button" class="tab-btn" data-tab="cosmetic" role="tab" aria-selected="false" aria-controls="tab-cosmetic" id="tabbtn-cosmetic">
+                    <i class="fas fa-magic" aria-hidden="true"></i> {{ _('Cosmetic Treatments') }}
+                </button>
+                <button type="button" class="tab-btn" data-tab="depilation" role="tab" aria-selected="false" aria-controls="tab-depilation" id="tabbtn-depilation">
+                    <i class="fas fa-leaf" aria-hidden="true"></i> {{ _('Depilation') }}
+                </button>
+            </div>
 
-                <!-- Pedicure Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-shoe-prints" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Pedicure') }}</h3>
-                    <p itemprop="description">{{ _('Complete foot care for health and beauty') }}</p>
-                    <ul>
-                        <li>{{ _('Cosmetic pedicure') }}</li>
-                        <li>{{ _('Hybrid pedicure') }}</li>
-                        <li>{{ _('Hybrid pedicure (toes only)') }}</li>
-                    </ul>
-                </article>
+            <div class="services-content-wrapper">
+                <!-- Haircut -->
+                <div class="service-tab-content active" id="tab-haircut" role="tabpanel" aria-labelledby="tabbtn-haircut">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-cut" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Haircut') }}</h3>
+                        <p itemprop="description">{{ _('Stylish haircuts and professional styling') }}</p>
+                        <ul>
+                            {{ price_item('Men barber cut') }}
+                            {{ price_item('Buzz cut') }}
+                            {{ price_item('Beard') }}
+                            {{ price_item('Combo') }}
+                            {{ price_item('Clipper cut (one length)') }}
+                            {{ price_item('Mens long hair haircut') }}
+                            {{ price_item('Kids haircut (up to 10 years)') }}
+                            {{ price_item('Womens haircut') }}
+                            {{ price_item('Bangs trim') }}
+                            {{ price_item('Hair ends trimming') }}
+                            {{ price_item('Styling') }}
+                            {{ price_item('Curls') }}
+                        </ul>
+                    </article>
+                </div>
 
-                <!-- NEW: Massage Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-spa" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Massage') }}</h3>
-                    <p itemprop="description">{{ _('Relaxing and therapeutic massage treatments') }}</p>
-                    <ul>
-                        <li>{{ _('Classic Massage') }}</li>
-                        <li>{{ _('Relaxation Massage') }}</li>
-                        <li>{{ _('Lymphatic Drainage') }}</li>
-                        <li>{{ _('Sports Massage') }}</li>
-                        <li>{{ _('Anti-cellulite Honey Massage') }}</li>
-                        <li>{{ _('Chinese Cupping Massage') }}</li>
-                        <li>{{ _('Kobido Massage') }}</li>
-                        <li>{{ _('Sinus Massage') }}</li>
-                        <li>{{ _('Vagus Nerve Massage') }}</li>
-                        <li>{{ _('Neck and Chest') }}</li>
-                    </ul>
-                </article>
+                <!-- Manicure -->
+                <div class="service-tab-content" id="tab-manicure" role="tabpanel" aria-labelledby="tabbtn-manicure">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-sparkles" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Manicure') }}</h3>
+                        <p itemprop="description">{{ _('Professional nail care and beautiful designs') }}</p>
+                        <ul>
+                            {{ price_item('Classic Manicure') }}
+                            {{ price_item('Hybrid Manicure') }}
+                            {{ price_item('Gel on natural nails') }}
+                            {{ price_item('Hybrid polish removal (other stylist)') }}
+                            {{ price_item('Gel removal (other stylist)') }}
+                            {{ price_item('Nail decoration') }}
+                            {{ price_item('Nail repair (one nail)') }}
+                            {{ price_item('Nail repair (2–3 fingers)') }}
+                        </ul>
+                    </article>
+                </div>
 
-                <!-- NEW: Cosmetic Treatments Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-magic" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Cosmetic Treatments') }}</h3>
-                    <p itemprop="description">{{ _('Professional facial and beauty treatments') }}</p>
-                    <ul>
-                        <li>{{ _('Kobido with Algae Mask') }}</li>
-                        <li>{{ _('Relaxing Facial Treatment') }}</li>
-                        <li>{{ _('Eyebrow Waxing') }}</li>
-                        <li>{{ _('Eyebrow Shaping and Tinting') }}</li>
-                        <li>{{ _('Eyebrow Henna') }}</li>
-                    </ul>
-                </article>
+                <!-- Pedicure -->
+                <div class="service-tab-content" id="tab-pedicure" role="tabpanel" aria-labelledby="tabbtn-pedicure">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-shoe-prints" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Pedicure') }}</h3>
+                        <p itemprop="description">{{ _('Complete foot care for health and beauty') }}</p>
+                        <ul>
+                            {{ price_item('Cosmetic pedicure') }}
+                            {{ price_item('Hybrid pedicure') }}
+                            {{ price_item('Hybrid pedicure (toes only)') }}
+                        </ul>
+                    </article>
+                </div>
 
-                <!-- NEW: Depilation Card -->
-                <article class="service-card" itemscope itemtype="http://schema.org/Service">
-                    <div class="service-icon">
-                        <i class="fas fa-leaf" aria-hidden="true"></i>
-                    </div>
-                    <h3 itemprop="name">{{ _('Depilation') }}</h3>
-                    <p itemprop="description">{{ _('Professional waxing and sugaring services') }}</p>
-                    <ul>
-                        <li>{{ _('Full Legs Waxing') }}</li>
-                        <li>{{ _('Half Legs Waxing') }}</li>
-                        <li>{{ _('Full Arms Waxing') }}</li>
-                        <li>{{ _('Half Arms Waxing') }}</li>
-                        <li>{{ _('Underarms Waxing') }}</li>
-                        <li>{{ _('Upper Lip Waxing') }}</li>
-                    </ul>
-                </article>
+                <!-- Massage -->
+                <div class="service-tab-content" id="tab-massage" role="tabpanel" aria-labelledby="tabbtn-massage">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-spa" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Massage') }}</h3>
+                        <p itemprop="description">{{ _('Relaxing and therapeutic massage treatments') }}</p>
+                        <ul>
+                            {{ price_item('Classic Massage') }}
+                            {{ price_item('Relaxation Massage') }}
+                            {{ price_item('Lymphatic Drainage') }}
+                            {{ price_item('Sports Massage') }}
+                            {{ price_item('Anti-cellulite Honey Massage') }}
+                            {{ price_item('Chinese Cupping Massage') }}
+                            {{ price_item('Kobido Massage') }}
+                            {{ price_item('Sinus Massage') }}
+                            {{ price_item('Vagus Nerve Massage') }}
+                            {{ price_item('Neck and Chest') }}
+                        </ul>
+                    </article>
+                </div>
+
+                <!-- Cosmetic Treatments -->
+                <div class="service-tab-content" id="tab-cosmetic" role="tabpanel" aria-labelledby="tabbtn-cosmetic">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-magic" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Cosmetic Treatments') }}</h3>
+                        <p itemprop="description">{{ _('Professional facial and beauty treatments') }}</p>
+                        <ul>
+                            {{ price_item('Kobido with Algae Mask') }}
+                            {{ price_item('Relaxing Facial Treatment') }}
+                            {{ price_item('Eyebrow Waxing') }}
+                            {{ price_item('Eyebrow Shaping and Tinting') }}
+                            {{ price_item('Eyebrow Henna') }}
+                        </ul>
+                    </article>
+                </div>
+
+                <!-- Depilation -->
+                <div class="service-tab-content" id="tab-depilation" role="tabpanel" aria-labelledby="tabbtn-depilation">
+                    <article class="service-card" itemscope itemtype="http://schema.org/Service">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf" aria-hidden="true"></i>
+                        </div>
+                        <h3 itemprop="name">{{ _('Depilation') }}</h3>
+                        <p itemprop="description">{{ _('Professional waxing and sugaring services') }}</p>
+                        <ul>
+                            {{ price_item('Full Legs Waxing') }}
+                            {{ price_item('Half Legs Waxing') }}
+                            {{ price_item('Full Arms Waxing') }}
+                            {{ price_item('Half Arms Waxing') }}
+                            {{ price_item('Underarms Waxing') }}
+                            {{ price_item('Upper Lip Waxing') }}
+                        </ul>
+                    </article>
+                </div>
             </div>
         </div>
     </section>
@@ -586,6 +625,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-7KQ193XKNE');
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const tabButtons = document.querySelectorAll('#services .tab-btn');
+          const tabContents = document.querySelectorAll('#services .service-tab-content');
+
+          tabButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              const target = this.dataset.tab;
+
+              tabButtons.forEach(function(b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+              });
+              this.classList.add('active');
+              this.setAttribute('aria-selected', 'true');
+
+              tabContents.forEach(function(content) {
+                content.classList.toggle('active', content.id === 'tab-' + target);
+              });
+            });
+          });
+        });
     </script>
 
     <script>
