@@ -1082,7 +1082,7 @@ body {
 
 /* --- New Services Tabs System --- */
 
-/* Контейнер для кнопок навігації */
+/* Category navigation buttons container */
 .services-tabs-container {
     display: flex;
     justify-content: center;
@@ -1094,7 +1094,7 @@ body {
     z-index: 2;
 }
 
-/* Стиль кнопок категорій */
+/* Category button style */
 .tab-btn {
     padding: 12px 25px;
     font-family: 'Poppins', sans-serif;
@@ -1118,14 +1118,14 @@ body {
     transition: color 0.3s ease;
 }
 
-/* Ховер ефект */
+/* Hover effect */
 .tab-btn:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border-color: var(--secondary-color);
 }
 
-/* Активна кнопка (вибрана категорія) */
+/* Active button (selected category) */
 .tab-btn.active {
     background: var(--gradient);
     color: white;
@@ -1136,39 +1136,39 @@ body {
     color: white;
 }
 
-/* Контейнер для контенту послуг */
+/* Services content container */
 .services-content-wrapper {
     position: relative;
     z-index: 2;
-    min-height: 400px; /* Запобігає стрибкам висоти */
-    max-width: 800px;  /* Робимо картку компактнішою по ширині */
+    min-height: 400px; /* Prevents height jumps */
+    max-width: 800px;  /* Makes the card narrower */
     margin: 0 auto;
 }
 
-/* Приховуємо всі картки за замовчуванням */
+/* Hide all cards by default */
 .service-tab-content {
     display: none;
     animation: fadeIn 0.5s ease;
 }
 
-/* Показуємо активну картку */
+/* Show the active card */
 .service-tab-content.active {
     display: block;
 }
 
-/* Модифікація існуючої картки для нового вигляду */
+/* Adapt the existing card to the new single-card layout */
 .service-tab-content .service-card {
-    /* Скидаємо деякі старі стилі, щоб вони пасували до режиму "одна картка" */
+    /* Reset some old styles so they fit the "one card" mode */
     transform: none !important;
     margin: 0 auto;
     background: white;
 }
 
-/* Робимо список послуг всередині картки більш читабельним (у дві колонки) */
+/* Make the service list inside the card more readable (two columns) */
 @media (min-width: 768px) {
     .service-card ul {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Дві колонки */
+        grid-template-columns: 1fr 1fr; /* Two columns */
         gap: 10px 30px;
         text-align: left;
     }
@@ -1179,11 +1179,11 @@ body {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Адаптивність для мобільних */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .services-tabs-container {
         gap: 10px;
-        overflow-x: auto; /* Дозволяє скролити кнопки, якщо їх багато */
+        overflow-x: auto; /* Allows scrolling the buttons if there are many */
         justify-content: flex-start;
         padding-bottom: 15px;
         -webkit-overflow-scrolling: touch;
@@ -1192,7 +1192,7 @@ body {
     .tab-btn {
         padding: 10px 20px;
         font-size: 0.9rem;
-        white-space: nowrap; /* Текст в один рядок */
+        white-space: nowrap; /* Keep text on one line */
     }
 
     .reviews-placeholder {
@@ -1200,7 +1200,7 @@ body {
     }
 
     .service-card ul {
-        grid-template-columns: 1fr; /* Одна колонка на мобільному */
+        grid-template-columns: 1fr; /* One column on mobile */
     }
 }
 
